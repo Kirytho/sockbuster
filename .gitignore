@@ -15,3 +15,4 @@ rubrica.txt
 
 # base de conocimiento local del agente
 .megamemory/
+.~lock.*#

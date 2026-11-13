@@ -94,3 +94,7 @@ edicion de inventario y renderizado del grafico.
 ## Licencia
 
 Codigo y diagramas generados para la evaluacion. Chart.js se distribuye bajo licencia MIT.
+
+### Lupa de diagramas
+
+En `diagramas.html` cada diagrama se abre en una lupa de pantalla completa: zoom con rueda del mouse o botones +/-, arrastre para desplazar, doble clic para alternar, Escape para cerrar. Los docentes pueden leer los diagramas sin salir de la pagina.

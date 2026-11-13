@@ -7,6 +7,7 @@
  */
 import { crear, porId } from '../nucleo/util.js';
 import { conectarCabecera } from '../presentacion/cabecera.js';
+import { abrirLupa } from '../presentacion/lupa.js';
 
 /** Diagramas que se renderizan en la pagina, en orden de vista. */
 const DIAGRAMAS = [
@@ -90,6 +91,20 @@ function construirSeccion(diagrama) {
     loading: 'lazy',
   });
 
+  const lupaSvg = '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><line x1="15.3" y1="15.3" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+  const botonZoom = crear(
+    'button',
+    {
+      class: 'diagrama__zoom',
+      type: 'button',
+      'aria-label': `Ampliar ${diagrama.titulo}`,
+      title: 'Clic para ampliar (o usa la rueda del mouse sobre el diagrama)',
+    },
+    imagen,
+    crear('span', { class: 'diagrama__hint', 'aria-hidden': 'true', html: `${lupaSvg}<span>Ampliar</span>` })
+  );
+  botonZoom.addEventListener('click', () => abrirLupa(imagen.src, diagrama.titulo, botonZoom));
+
   const codigo = crear('pre', { class: 'fuente-code' }, 'Cargando fuente…');
   const detalle = crear(
     'details',
@@ -129,7 +144,7 @@ function construirSeccion(diagrama) {
     ),
     insignias,
     crear('p', { class: 'vista__subtitulo' }, diagrama.descripcion),
-    crear('div', { class: 'diagrama' }, imagen, crear('p', { class: 'diagrama__pie' }, diagrama.titulo)),
+    crear('div', { class: 'diagrama' }, botonZoom, crear('p', { class: 'diagrama__pie' }, diagrama.titulo)),
     detalle
   );
 }

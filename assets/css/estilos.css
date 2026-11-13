@@ -563,3 +563,54 @@ details.fuente[open] > summary::before { transform: rotate(90deg); }
   }
   .copo { display: none; }
 }
+
+/* ──────────────────────────────────────── lupa de diagramas UML (lightbox) */
+.diagrama__zoom {
+  position: relative; display: block; width: 100%; padding: 0; border: 0;
+  background: transparent; cursor: zoom-in; border-radius: var(--radio-chico);
+}
+.diagrama__zoom:focus-visible { outline: 3px solid var(--oro); outline-offset: 2px; }
+.diagrama__zoom img { margin-inline: auto; height: auto; max-width: 100%; }
+.diagrama__hint {
+  position: absolute; right: .6rem; bottom: .6rem; display: inline-flex; align-items: center; gap: .4rem;
+  background: rgba(14, 42, 31, .88); color: #f5f2e8; font-size: .8rem; font-weight: 600;
+  padding: .35rem .75rem; border-radius: 999px; pointer-events: none; letter-spacing: .02em;
+}
+.lupa {
+  position: fixed; inset: 0; z-index: 300; display: none;
+  background: rgba(8, 18, 13, .88); backdrop-filter: blur(3px);
+  align-items: center; justify-content: center;
+}
+.lupa.lupa--visible { display: flex; }
+.lupa img {
+  max-width: 92vw; max-height: 82vh; width: auto; height: auto;
+  background: #fff; border-radius: 8px; box-shadow: 0 24px 80px rgba(0,0,0,.6);
+  cursor: grab; user-select: none; touch-action: none; transform-origin: center center;
+  will-change: transform;
+}
+.lupa__imagen--arrastrando, .lupa img.lupa__imagen--arrastrando { cursor: grabbing; }
+.lupa__barra {
+  position: absolute; top: 1rem; right: 1rem; display: flex; gap: .45rem; z-index: 2;
+}
+.lupa__boton {
+  min-width: 44px; height: 44px; border-radius: 10px; border: 1px solid rgba(247,241,230,.35);
+  background: rgba(18, 63, 44, .9); color: #f7f1e6; font-size: 1.35rem; font-weight: 700;
+  cursor: pointer; display: inline-grid; place-items: center; padding: 0 .75rem;
+}
+.lupa__boton:hover { background: rgba(28, 74, 54, .95); }
+.lupa__boton--texto { font-size: .85rem; min-width: 64px; }
+.lupa__boton--cerrar { font-size: 1.6rem; }
+.lupa__pie {
+  position: absolute; bottom: 2.6rem; left: 50%; transform: translateX(-50%);
+  color: #f7f1e6; font-size: .95rem; font-weight: 600; background: rgba(14,42,31,.85);
+  padding: .35rem 1rem; border-radius: 999px; border: 1px solid rgba(212,175,55,.5);
+  max-width: 90vw; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.lupa__ayuda {
+  position: absolute; bottom: .8rem; left: 50%; transform: translateX(-50%);
+  color: rgba(247,241,230,.75); font-size: .78rem; margin: 0; white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .lupa__ayuda { display: none; }
+  .lupa img { max-width: 96vw; max-height: 78vh; }
+}

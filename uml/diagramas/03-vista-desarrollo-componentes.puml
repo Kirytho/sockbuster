@@ -1,0 +1,107 @@
+@startuml
+'=====================================================================
+' VISTA DE DESARROLLO - DIAGRAMA DE COMPONENTES
+' Componentes, paquetes, librerias y subsistemas alineados con el
+' codigo real del repositorio (assets/js/**).
+' Criterio de evaluacion 2.1.3
+'=====================================================================
+skinparam shadowing false
+skinparam linetype ortho
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+skinparam rectangle {
+  BackgroundColor #F4F0E6
+  BorderColor #8A7F63
+}
+
+package "Frontend Sockbuster" as Frontend {
+
+  package "Páginas" as Paginas {
+    [Inicio\nassets/js/paginas/inicio.js] as CInicio
+    [Catálogo\nassets/js/paginas/catalogo.js] as CCatalogo
+    [Diagramas\nassets/js/paginas/diagramas.js] as CDiagramas
+  }
+
+  package "Presentación" as Presentacion {
+    [Cabecera\npresentacion/cabecera.js] as CCabecera
+    [Componentes UI\npresentacion/componentes.js] as CComponentes
+    [Modal\npresentacion/modal.js] as CModal
+    [Avisos\npresentacion/aviso.js] as CAvisos
+    [Panel Carrito\npresentacion/carritoPanel.js] as CCarritoPanel
+    [Gráfico\npresentacion/grafico.js] as CGrafico
+  }
+
+  package "Dominio" as Dominio {
+    [Producto\ndominio/producto.js] as CProducto
+    [Carrito\ndominio/carrito.js] as CCarrito
+    [Pedido\ndominio/pedido.js] as CPedido
+    [Reseña\ndominio/resena.js] as CResena
+    [Administración\ndominio/admin.js] as CAdmin
+  }
+
+  package "Datos" as Datos {
+    [Catálogo de datos\ndatos/catalogo.js] as CCatalogoDatos
+    [Repositorio\ndatos/repositorio.js] as CRepositorio
+  }
+
+  package "Seguridad" as Seguridad {
+    [JWT\nseguridad/jwt.js] as CJWT
+    [Sesión\nseguridad/sesion.js] as CSesion
+  }
+
+  package "Núcleo" as Nucleo {
+    [Configuración\nnucleo/config.js] as CConfig
+    [Utilidades\nnucleo/util.js] as CUtil
+    [Bus de eventos\nnucleo/eventos.js] as CEventos
+  }
+
+  package "Librerías vendorizadas" as Librerias {
+    [Chart.js 4.4.7\nassets/vendor/chart.umd.js\n(MIT)] as CChart
+  }
+}
+
+'----------------------------------------------------- dependencias
+CInicio ..> Dominio : usa
+CInicio ..> Presentacion : usa
+CCatalogo ..> Dominio : usa
+CCatalogo ..> Presentacion : usa
+CDiagramas ..> Nucleo : usa
+
+Presentacion ..> Dominio : usa
+Presentacion ..> Nucleo : usa
+CGrafico ..> Librerias : Chart.js
+
+Dominio ..> Datos : persiste
+Dominio ..> Seguridad : autoriza
+Dominio ..> Nucleo : publica eventos
+
+CCatalogoDatos ..> Nucleo : rutas y constantes
+CRepositorio ..> Nucleo : configuracion de BD
+CSesion ..> CJWT : firma y verifica tokens
+CSesion ..> Datos : usuarios
+CAdmin ..> CSesion : exige rol ADMIN
+
+note right of CChart
+  Unica dependencia externa del proyecto.
+  Se versiona dentro del repositorio para
+  que el sitio no dependa de ningun CDN
+  en tiempo de ejecucion.
+end note
+
+note bottom of CProducto
+  Capa de casos de uso: no conoce el DOM.
+  Publica hechos en el bus de eventos y la
+  capa de presentacion decide que pintar.
+end note
+
+note bottom of CRepositorio
+  Persistencia del prototipo sobre IndexedDB.
+  El catalogo semilla (data/catalogo.json)
+  se sirve como solo lectura desde el repo.
+end note
+
+note bottom of CAdmin
+  Exige rol ADMIN y un token JWT valido
+  antes de cada escritura (RF03 / RNF02).
+end note
+@enduml

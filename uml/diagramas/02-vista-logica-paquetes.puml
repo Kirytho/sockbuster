@@ -1,0 +1,54 @@
+@startuml
+'=====================================================================
+' VISTA LOGICA - DIAGRAMA DE PAQUETES
+' Agrupa el dominio en paquetes coherentes y muestra sus dependencias.
+' Criterio de evaluacion 2.1.2
+'=====================================================================
+skinparam shadowing false
+skinparam linetype ortho
+skinparam packageStyle rectangle
+
+package "Catálogo" as Catalogo {
+  class "Calcetín"
+  class "Colección"
+  class "PelículaSerie"
+}
+
+package "Identidad y Acceso" as Identidad {
+  class "Usuario"
+  class "Rol"
+  class "Credenciales"
+}
+
+package "Carrito" as CarritoPkg {
+  class "Carrito"
+  class "ItemCarrito"
+}
+
+package "Pedidos" as Pedidos {
+  class "Pedido"
+  class "DetallePedido"
+  class "EstadoPedido"
+  class "MetodoPago"
+}
+
+package "Reputación" as Reputacion {
+  class "Reseña"
+}
+
+'------------------------------------------------- dependencias
+Identidad ..> Catalogo : el usuario consulta
+CarritoPkg ..> Catalogo : agrega productos
+Pedidos ..> Catalogo : incluye productos
+Pedidos ..> Identidad : registra el comprador
+Reputacion ..> Identidad : exige usuario registrado
+Reputacion ..> Catalogo : valora un calcetín
+CarritoPkg ..> Pedidos : se convierte en pedido
+
+note as NotaPaquetes
+  La Vista Logica no depende de la tecnologia:
+  describe QUE existe en el dominio. Como se
+  implementa cada paquete es objeto de la
+  Vista de Desarrollo.
+end note
+@enduml

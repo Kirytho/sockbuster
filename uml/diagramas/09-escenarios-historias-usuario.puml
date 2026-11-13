@@ -1,0 +1,106 @@
+@startuml
+'=====================================================================
+' QUINTA VISTA - ESCENARIOS: HISTORIAS DE USUARIO
+' Cada historia valida y une los elementos modelados en las cuatro
+' vistas anteriores. Criterio de evaluacion 2.1.6
+'=====================================================================
+skinparam shadowing false
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #1D2733
+  ArrowColor #1D2733
+}
+skinparam stereotype {
+  BackgroundColor #E8402A
+  FontColor #FFFFFF
+}
+
+class "US-01\nComo visitante quiero\nexplorar el catálogo\npara descubrir modelos" as US01 <<historia>> {
+  --
+  +Criterios:
+  +Ver nombre, precio, stock
+  +y tallas de cada calcetín
+  +Filtrar por colección
+  +Ver la foto del producto
+  --
+  +Requisito: RF01
+  +Vistas: Lógica, Procesos
+}
+
+class "US-02\nComo visitante quiero\nagregar productos al\ncarrito para comprar" as US02 <<historia>> {
+  --
+  +Criterios:
+  +Agregar y quitar ítems
+  +Modificar cantidades
+  +Ver el total del carrito
+  --
+  +Requisito: RF02
+  +Vistas: Lógica, Procesos
+}
+
+class "US-03\nComo cliente quiero\nconfirmar mi pedido para\nrecibir un comprobante" as US03 <<historia>> {
+  --
+  +Criterios:
+  +El pago se verifica (simulado)
+  +Se genera un ID único
+  +  (SB-AAAA-NNNNN)
+  +Se descuenta el stock
+  +Se registra el pedido
+  --
+  +Requisito: RF02
+  +Vistas: Procesos, Física
+}
+
+class "US-04\nComo administrador\nquiero actualizar el stock\ny los precios" as US04 <<historia>> {
+  --
+  +Criterios:
+  +Sólo rol ADMIN accede
+  +Token JWT validado
+  +Cambios reflejados en el
+  +  catálogo al instante
+  --
+  +Requisito: RF03, RNF02
+  +Vistas: Desarrollo, Física
+}
+
+class "US-05\nComo administrador\nquiero registrar modelos\nnuevos y asociarlos" as US05 <<historia>> {
+  --
+  +Criterios:
+  +Nombre, precio y stock
+  +Colección y película/serie
+  +Tallas disponibles
+  --
+  +Requisito: RF03
+  +Vistas: Lógica, Desarrollo
+}
+
+class "US-06\nComo cliente registrado\nquiero publicar una reseña\npara compartir mi opinión" as US06 <<historia>> {
+  --
+  +Criterios:
+  +Valoración de 1 a 5 estrellas
+  +Comentario obligatorio
+  +Visible en la ficha
+  + del producto
+  --
+  +Requisito: RF04
+  +Vistas: Lógica, Escenarios
+}
+
+class "US-07\nComo visitante quiero\nque el sitio cargue rápido\ny de forma segura" as US07 <<historia>> {
+  --
+  +Criterios:
+  +Carga inicial < 2 segundos
+  +Todo el tráfico por HTTPS
+  +Hospedado en la nube
+  --
+  +Requisito: RNF01, RNF02
+  +Vistas: Física
+}
+
+US01 ..> US02 : "inspira"
+US02 ..> US03 : "desemboca en"
+US04 ..> US05 : "extiende"
+US06 ..> US01 : "opina sobre"
+US03 ..> US07 : "opera sobre"
+@enduml

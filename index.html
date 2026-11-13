@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sockbuster Video &amp; Socks - Calcetines tematicos</title>
+  <meta name="description" content="Sockbuster: tienda especializada en calcetines tematicos inspirados en peliculas clasicas, series de culto y cultura pop. Prototipo web con arquitectura 4+1 UML.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+  <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body>
+  <header class="cabecera">
+    <div class="contenedor cabecera__fila">
+      <a class="marca" href="index.html">
+        <img src="assets/img/logo.svg" alt="Logo de Sockbuster" width="34" height="34">
+        <span>SOCK<b>BUSTER</b></span>
+      </a>
+      <nav class="nav-principal" aria-label="Navegacion principal">
+        <a href="index.html">Inicio</a>
+        <a href="catalogo.html">Catalogo</a>
+        <a href="diagramas.html">Diagramas UML</a>
+      </nav>
+      <div class="acciones-cabecera">
+        <div id="zonaSesion" style="display:flex;gap:.4rem;align-items:center"></div>
+        <button class="boton-icono" type="button" id="botonAbrirCarrito" aria-label="Abrir carrito de compras">
+          <span aria-hidden="true">🛒</span> Carrito
+          <span class="contador" id="contadorCarrito" hidden>0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ------------------------------------------------------------ hero -->
+    <section class="hero">
+      <div class="contenedor">
+        <div class="hero__panel">
+          <div class="hero__texto">
+            <span class="hero__etiqueta">Video &amp; Socks desde 2026</span>
+            <h1>Calcetines que cuentan la historia de tu cultura pop</h1>
+            <p class="hero__destacado">
+              Cada modelo esta inspirado en una pelicula, una serie o un clasico de la animacion.
+              Explora el catalogo por coleccion, arma tu pedido y completa todo el recorrido de compra.
+            </p>
+            <div class="hero__cta">
+              <a class="boton boton--primario" href="catalogo.html">Explorar el catalogo</a>
+              <a class="boton boton--fantasma" href="diagramas.html">Ver la arquitectura 4+1</a>
+            </div>
+          </div>
+          <div class="hero__arte">
+            <img src="assets/img/hero.svg" alt="Coleccion de calcetines tematicos Sockbuster" width="640" height="300">
+          </div>
+        </div>
+
+        <!-- ------------------------------------------------- credenciales -->
+        <div class="creditos">
+          <div class="creditos__titulo">Integrantes del equipo</div>
+          <div class="creditos__nombres">
+            <!-- Los nombres de los estudiantes se completan aqui (campos editables). -->
+            <input class="campo-nombre" type="text" placeholder="Nombre y apellido del estudiante" aria-label="Nombre del estudiante">
+            <input class="campo-nombre" type="text" placeholder="Nombre y apellido del estudiante" aria-label="Nombre del estudiante">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------------ metricas -->
+    <section class="seccion">
+      <div class="contenedor">
+        <div class="rejilla-2" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+          <div class="tarjeta-info">
+            <h4>Modelos en catalogo</h4>
+            <p style="font-size:1.8rem;font-weight:800;margin:0;color:var(--rojo)" id="totalModelos">-</p>
+          </div>
+          <div class="tarjeta-info">
+            <h4>Desde</h4>
+            <p style="font-size:1.8rem;font-weight:800;margin:0;color:var(--rojo)" id="precioDesde">-</p>
+          </div>
+          <div class="tarjeta-info">
+            <h4>Colecciones tematicas</h4>
+            <p style="font-size:1.8rem;font-weight:800;margin:0;color:var(--rojo)">4</p>
+          </div>
+          <div class="tarjeta-info">
+            <h4>Vistas UML documentadas</h4>
+            <p style="font-size:1.8rem;font-weight:800;margin:0;color:var(--rojo)">5</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------- colecciones -->
+    <section class="seccion">
+      <div class="contenedor">
+        <div class="seccion__cabecera">
+          <div class="eyebrow">Colecciones</div>
+          <h2>Explorar por tematica</h2>
+          <p>Cada coleccion agrupa los calcetines segun el universo que los inspira.</p>
+        </div>
+        <div class="rejilla-colecciones" id="rejillaColecciones"></div>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------------ destacados -->
+    <section class="seccion">
+      <div class="contenedor">
+        <div class="seccion__cabecera">
+          <div class="eyebrow">Mas vendidos</div>
+          <h2>Los favoritos de la comunidad</h2>
+          <p>Seleccion destacada del catalogo de Sockbuster.</p>
+        </div>
+        <div class="rejilla-productos" id="rejillaDestacados"></div>
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------- requerimientos -->
+    <section class="seccion">
+      <div class="contenedor">
+        <div class="seccion__cabecera">
+          <div class="eyebrow">Trazabilidad</div>
+          <h2>Requerimientos del caso de estudio</h2>
+          <p>
+            Cada requerimiento funcional y no funcional del caso "Sockbuster Video &amp; Socks" se
+            modela en las vistas UML y se materializa en la web. Esta matriz es la que sostiene la
+            interpretacion de los requerimientos (criterio 2.1.1).
+          </p>
+        </div>
+        <div style="overflow-x:auto;background:var(--superficie);border:1px solid var(--borde);border-radius:var(--radio)">
+          <table class="tabla-traza">
+            <thead>
+              <tr>
+                <th style="width:72px">ID</th>
+                <th>Requerimiento</th>
+                <th style="width:24%">Vista UML</th>
+                <th style="width:26%">Implementacion en la web</th>
+              </tr>
+            </thead>
+            <tbody id="cuerpoRequisitos"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <div class="pie__rejilla">
+        <div>
+          <h4>Sockbuster Video &amp; Socks</h4>
+          <p style="font-size:.9rem;max-width:44ch">
+            Prototipo funcional de arquitectura de software. Modelado con el paradigma 4+1 de
+            vistas UML y desplegado en GitHub Pages.
+          </p>
+        </div>
+        <div>
+          <h4>Sitio</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="catalogo.html">Catalogo</a></li>
+            <li><a href="diagramas.html">Diagramas UML</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Arquitectura</h4>
+          <ul>
+            <li>Vista Logica</li>
+            <li>Vista de Desarrollo</li>
+            <li>Vista de Procesos</li>
+            <li>Vista Fisica</li>
+            <li>Escenarios</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pie__firma">
+        <span>Modelamiento de soluciones informaticas &middot; TI3025</span>
+        <span>Prototipo desplegado en GitHub Pages &middot; 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/paginas/inicio.js"></script>
+</body>
+</html>

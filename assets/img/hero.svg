@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" role="img" aria-label="Coleccion Sockbuster">
+  <title>Banner Sockbuster</title>
+  <defs>
+    <linearGradient id="hg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3b6fd4"/>
+      <stop offset="55%" stop-color="#7b3fa0"/>
+      <stop offset="100%" stop-color="#e8402a"/>
+    </linearGradient>
+    <linearGradient id="hs1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f7f3ea"/>
+      <stop offset="100%" stop-color="#d8d2c4"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="300" rx="24" fill="url(#hg)"/>
+  <g opacity="0.22" fill="#ffffff">
+    <circle cx="70" cy="56" r="3"/><circle cx="150" cy="38" r="2.4"/><circle cx="232" cy="72" r="3.4"/>
+    <circle cx="330" cy="44" r="2.2"/><circle cx="430" cy="80" r="3"/><circle cx="520" cy="50" r="2.6"/>
+    <circle cx="596" cy="96" r="3.2"/><circle cx="110" cy="230" r="2.8"/><circle cx="470" cy="238" r="3"/>
+    <circle cx="268" cy="252" r="2.4"/><circle cx="560" cy="188" r="2.6"/>
+  </g>
+  <g transform="translate(96 62) scale(0.92)">
+    <path d="M22 12 Q32 7 42 12 L42 34 Q42 40 47 44 L52 48 Q57 52 57 57 Q57 61 51 61 L27 61 Q17 61 17 51 L17 19 Q17 14 22 12 Z" fill="url(#hs1)" stroke="#3a3128" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M17 22 Q32 17 42 22 L42 13 Q32 8 22 13 Q17 15 17 22 Z" fill="#e8402a"/>
+    <path d="M22 40 Q32 36 42 40 L42 34 Q32 30 22 34 Z" fill="#7b3fa0" opacity="0.85"/>
+  </g>
+  <g transform="translate(210 38) scale(1.05)">
+    <path d="M22 12 Q32 7 42 12 L42 34 Q42 40 47 44 L52 48 Q57 52 57 57 Q57 61 51 61 L27 61 Q17 61 17 51 L17 19 Q17 14 22 12 Z" fill="#1d2733" stroke="#0d131b" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M17 22 Q32 17 42 22 L42 13 Q32 8 22 13 Q17 15 17 22 Z" fill="#00e5c3"/>
+    <circle cx="30" cy="38" r="6" fill="none" stroke="#00e5c3" stroke-width="2.4"/>
+    <path d="M30 26 L30 30" stroke="#00e5c3" stroke-width="2.4" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(330 66) scale(0.88)">
+    <path d="M22 12 Q32 7 42 12 L42 34 Q42 40 47 44 L52 48 Q57 52 57 57 Q57 61 51 61 L27 61 Q17 61 17 51 L17 19 Q17 14 22 12 Z" fill="#e8b931" stroke="#8a6a1f" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M17 22 Q32 17 42 22 L42 13 Q32 8 22 13 Q17 15 17 22 Z" fill="#1d2733"/>
+    <circle cx="30" cy="36" r="7" fill="none" stroke="#8a6a1f" stroke-width="2.2"/>
+    <path d="M30 26 L30 30" stroke="#8a6a1f" stroke-width="2.2" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(438 44) scale(1.0)">
+    <path d="M22 12 Q32 7 42 12 L42 34 Q42 40 47 44 L52 48 Q57 52 57 57 Q57 61 51 61 L27 61 Q17 61 17 51 L17 19 Q17 14 22 12 Z" fill="#8b2f6b" stroke="#4d163c" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M17 22 Q32 17 42 22 L42 13 Q32 8 22 13 Q17 15 17 22 Z" fill="#f7f3ea"/>
+    <path d="M26 44 q4 -8 8 0 q4 8 8 0" fill="none" stroke="#f7f3ea" stroke-width="2.4" stroke-linecap="round"/>
+  </g>
+  <text x="32" y="268" font-family="Verdana, Geneva, sans-serif" font-size="22" font-weight="bold" fill="#ffffff" opacity="0.92">SOCKBUSTER</text>
+  <text x="32" y="288" font-family="Verdana, Geneva, sans-serif" font-size="12" fill="#ffffff" opacity="0.72">Video &amp; Socks - calcetines tematicos</text>
+</svg>

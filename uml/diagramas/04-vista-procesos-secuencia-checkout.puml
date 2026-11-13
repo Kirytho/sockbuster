@@ -1,0 +1,91 @@
+@startuml
+'=====================================================================
+' VISTA DE PROCESOS - DIAGRAMA DE SECUENCIA: CHECKOUT
+' Muestra concurrencia (par), sincronizacion (join del par) y el flujo
+' de trabajo del proceso clave de confirmacion de pedido (RF02).
+' Criterio de evaluacion 2.1.4
+'=====================================================================
+skinparam shadowing false
+skinparam sequence {
+  ArrowColor #1D2733
+  LifeLineBorderColor #1D2733
+  LifeLineBackgroundColor #F4F0E6
+  ParticipantBorderColor #1D2733
+  ParticipantBackgroundColor #FFFFFF
+  ParticipantFontColor #1D2733
+  ActorBorderColor #1D2733
+  ActorBackgroundColor #FFFFFF
+}
+autonumber
+
+actor "Cliente" as Cliente
+participant "IU Catálogo" as IU
+participant "Ctrl. Carrito" as CtrlCarrito
+participant "Ctrl. Pedido" as CtrlPedido
+database "Repositorio\n(IndexedDB)" as Repo
+participant "Pasarela de Pago\n(simulada)" as Pago
+
+== Fase 1:==
+
+Cliente -> IU : confirmarPedido(datos, metodoPago)
+activate IU
+IU -> CtrlCarrito : obtenerItems()
+activate CtrlCarrito
+CtrlCarrito -> Repo : leer(carrito)
+Repo --> CtrlCarrito : items[]
+CtrlCarrito --> IU : items[]
+deactivate CtrlCarrito
+
+IU -> CtrlPedido : confirmarPedido(items, metodoPago, direccion)
+activate CtrlPedido
+
+== Fase 2: verificacion concurrente ==
+
+par Verificacion de stock
+  CtrlPedido -> Repo : leer(productos)
+  Repo --> CtrlPedido : stock actual
+  CtrlPedido -> CtrlPedido : validar(items, stock)
+else Verificacion de pago
+  CtrlPedido -> Pago : autorizar(total, metodo)
+  Pago --> CtrlPedido : autorizacion / rechazo
+end par
+
+note over CtrlPedido
+  Punto de sincronizacion: ambas
+  verificaciones deben completarse
+  antes de confirmar el pedido.
+end note
+
+== Fase 3: confirmacion ==
+
+alt Stock suficiente AND pago autorizado
+  CtrlPedido -> Repo : siguienteContador(pedido)
+  Repo --> CtrlPedido : numero
+  CtrlPedido -> CtrlPedido : id = SB-AAAA-NNNNN
+  CtrlPedido -> Repo : guardar(Pedido confirmado)
+  loop por cada item del pedido
+    CtrlPedido -> Repo : actualizarStock(id, stock - cantidad)
+    Repo --> CtrlPedido : stock actualizado
+  end loop
+  CtrlPedido -> IU : Pedido(id, total)
+  deactivate CtrlPedido
+  IU -> CtrlCarrito : vaciarCarrito()
+  activate CtrlCarrito
+  CtrlCarrito -> Repo : guardar(carrito vacio)
+  deactivate CtrlCarrito
+  IU --> Cliente : Pedido confirmado con identificador unico
+  deactivate IU
+else Stock insuficiente
+  CtrlPedido -> Repo : leer(stock)
+  Repo --> CtrlPedido : faltantes
+  CtrlPedido --> IU : error("sin stock suficiente")
+  deactivate CtrlPedido
+  IU --> Cliente : mensaje de error
+  deactivate IU
+else Pago rechazado
+  CtrlPedido --> IU : error("pago rechazado")
+  deactivate CtrlPedido
+  IU --> Cliente : mensaje de error
+  deactivate IU
+end
+@enduml

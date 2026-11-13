@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arquitectura UML 4+1 - Sockbuster</title>
+  <meta name="description" content="Documentacion tecnica de la arquitectura de Sockbuster segun el paradigma 4+1 de vistas UML: vista logica, vista de desarrollo, vista de procesos, vista fisica y escenarios.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+  <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body>
+  <header class="cabecera">
+    <div class="contenedor cabecera__fila">
+      <a class="marca" href="index.html">
+        <img src="assets/img/logo.svg" alt="Logo de Sockbuster" width="34" height="34">
+        <span>SOCK<b>BUSTER</b></span>
+      </a>
+      <nav class="nav-principal" aria-label="Navegacion principal">
+        <a href="index.html">Inicio</a>
+        <a href="catalogo.html">Catalogo</a>
+        <a href="diagramas.html">Diagramas UML</a>
+      </nav>
+      <div class="acciones-cabecera">
+        <div id="zonaSesion" style="display:flex;gap:.4rem;align-items:center"></div>
+        <button class="boton-icono" type="button" id="botonAbrirCarrito" aria-label="Abrir carrito de compras">
+          <span aria-hidden="true">🛒</span> Carrito
+          <span class="contador" id="contadorCarrito" hidden>0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ------------------------------------------- navegacion de las vistas -->
+  <nav class="nav-vistas" aria-label="Vistas del paradigma 4+1">
+    <div class="contenedor">
+      <div class="nav-vistas__lista">
+        <a href="#vista-logica">Vista Logica</a>
+        <a href="#vista-desarrollo">Vista de Desarrollo</a>
+        <a href="#vista-procesos">Vista de Procesos</a>
+        <a href="#vista-fisica">Vista Fisica</a>
+        <a href="#vista-escenarios">Escenarios</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="seccion" style="padding-bottom:1rem">
+      <div class="contenedor">
+        <div class="seccion__cabecera">
+          <div class="eyebrow">Paradigma 4+1 de vistas UML</div>
+          <h1>Arquitectura de Sockbuster</h1>
+          <p>
+            La documentacion tecnica esta organizada estrictamente por las cinco vistas del
+            paradigma 4+1 de Kruchten: Vista Logica, Vista de Desarrollo, Vista de Procesos,
+            Vista Fisica y la quinta vista de Escenarios, que valida y une a las anteriores.
+            Cada diagrama se renderiza desde su fuente PlantUML, disponible para consulta en la
+            misma pagina.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="contenedor" id="seccionesDiagramas">
+      <p style="color:var(--tinta-suave)">Cargando diagramas...</p>
+    </div>
+
+    <!-- ------------------------------------- anclas de navegacion por vista -->
+    <div class="contenedor" style="padding-bottom:2rem">
+      <span id="vista-logica" class="sr-solo">Vista Logica</span>
+      <span id="vista-desarrollo" class="sr-solo">Vista de Desarrollo</span>
+      <span id="vista-procesos" class="sr-solo">Vista de Procesos</span>
+      <span id="vista-fisica" class="sr-solo">Vista Fisica</span>
+      <span id="vista-escenarios" class="sr-solo">Escenarios</span>
+    </div>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <div class="pie__rejilla">
+        <div>
+          <h4>Sockbuster Video &amp; Socks</h4>
+          <p style="font-size:.9rem;max-width:44ch">
+            Prototipo funcional de arquitectura de software. Modelado con el paradigma 4+1 de
+            vistas UML y desplegado en GitHub Pages.
+          </p>
+        </div>
+        <div>
+          <h4>Sitio</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="catalogo.html">Catalogo</a></li>
+            <li><a href="diagramas.html">Diagramas UML</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Arquitectura</h4>
+          <ul>
+            <li>Vista Logica</li>
+            <li>Vista de Desarrollo</li>
+            <li>Vista de Procesos</li>
+            <li>Vista Fisica</li>
+            <li>Escenarios</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pie__firma">
+        <span>Modelamiento de soluciones informaticas &middot; TI3025</span>
+        <span>Prototipo desplegado en GitHub Pages &middot; 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/paginas/diagramas.js"></script>
+</body>
+</html>

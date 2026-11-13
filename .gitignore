@@ -1,0 +1,17 @@
+# artefactos de pruebas locales
+.playwright-mcp/
+*.local.png
+
+# sistema operativo
+.DS_Store
+Thumbs.db
+
+# nada del sitio es compilado: no hay paso de build
+node_modules/
+
+# material de la evaluacion: se conserva local, no se publica
+EV3 MOD_DIURNO0.docx
+rubrica.txt
+
+# base de conocimiento local del agente
+.megamemory/

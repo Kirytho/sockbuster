@@ -1,0 +1,58 @@
+@startuml
+'=====================================================================
+' VISTA DE PROCESOS - DIAGRAMA DE ACTIVIDADES: FILTRADO DEL CATALOGO
+' Muestra concurrencia (fork/join), sincronizacion y flujo de trabajo del
+' proceso de filtrado (RF01).
+' Criterio de evaluacion 2.1.4
+'=====================================================================
+skinparam shadowing false
+skinparam activity {
+  BackgroundColor #FFFFFF
+  BorderColor #1D2733
+  DiamondBackgroundColor #F4F0E6
+  DiamondBorderColor #1D2733
+  ArrowColor #1D2733
+}
+skinparam partition {
+  BackgroundColor #FBF8F1
+  BorderColor #8A7F63
+}
+
+|Usuario|
+start
+:Explorar catálogo;
+
+|UI Catálogo|
+:Detectar evento de filtro\n(búsqueda / check / rango);
+:Cargar criterios\n(colección, precio, talla, stock);
+
+|Dominio|
+fork
+  :Evaluar criterio Colección;
+fork again
+  :Evaluar criterio Precio máximo;
+fork again
+  :Evaluar criterio Talla;
+fork again
+  :Evaluar criterio Disponibilidad;
+fork again
+  :Evaluar criterio Texto libre;
+end fork
+note right
+  Los cinco criterios se evaluan
+  en paralelo y se sincronizan
+  en el punto de union (join).
+end note
+:Intersectar criterios\n(interseccion de conjuntos);
+
+if (¿Hay resultados?) then (sí)
+  :Ordenar por criterio elegido;
+  :Pintar grilla de productos;
+else (no)
+  :Mostrar estado vacío\ny sugerencia de limpiar filtros;
+endif
+
+|Usuario|
+:Aplicar y ver resultados;
+stop
+@enduml

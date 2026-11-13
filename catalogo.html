@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catalogo - Sockbuster Video &amp; Socks</title>
+  <meta name="description" content="Catalogo interactivo de calcetines tematicos de Sockbuster: filtros por coleccion, precio, talla y stock, carrito de compras, checkout y panel de administracion.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+  <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body>
+  <header class="cabecera">
+    <div class="contenedor cabecera__fila">
+      <a class="marca" href="index.html">
+        <img src="assets/img/logo.svg" alt="Logo de Sockbuster" width="34" height="34">
+        <span>SOCK<b>BUSTER</b></span>
+      </a>
+      <nav class="nav-principal" aria-label="Navegacion principal">
+        <a href="index.html">Inicio</a>
+        <a href="catalogo.html">Catalogo</a>
+        <a href="diagramas.html">Diagramas UML</a>
+      </nav>
+      <div class="acciones-cabecera">
+        <div id="zonaSesion" style="display:flex;gap:.4rem;align-items:center"></div>
+        <button class="boton-icono" type="button" id="botonAbrirCarrito" aria-label="Abrir carrito de compras">
+          <span aria-hidden="true">🛒</span> Carrito
+          <span class="contador" id="contadorCarrito" hidden>0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="seccion">
+    <div class="contenedor">
+      <div class="seccion__cabecera">
+        <div class="eyebrow">RF01 &middot; Catalogo por colecciones tematicas</div>
+        <h1>Catalogo de calcetines</h1>
+        <p>
+          Filtra por coleccion, precio, talla y disponibilidad. Cada ficha muestra el diseno, el
+          precio, el stock y las tallas, con las resenas de la comunidad.
+        </p>
+      </div>
+
+      <div class="layout-catalogo">
+        <!-- ------------------------------------------------ filtros -->
+        <aside class="panel-filtros" id="panelFiltros" aria-label="Filtros del catalogo">
+          <p style="color:var(--tinta-suave);font-size:.9rem">Cargando filtros...</p>
+        </aside>
+
+        <!-- ------------------------------------------------ resultados -->
+        <section>
+          <div class="buscador">
+            <input type="search" id="busqueda" placeholder="Buscar por nombre o descripcion..." aria-label="Buscar en el catalogo">
+          </div>
+
+          <div class="barra-resultados">
+            <div>
+              <p id="resumenResultados">Cargando catalogo...</p>
+              <div class="chips" id="chipsActivos"></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:.5rem">
+              <label for="orden" style="font-size:.88rem;color:var(--tinta-suave)">Ordenar</label>
+              <select id="orden" aria-label="Criterio de ordenamiento" style="font:inherit;padding:.45rem .6rem;border:1px solid var(--borde);border-radius:9px;background:var(--superficie)">
+                <option value="destacado">Destacados</option>
+                <option value="precio-asc">Precio: menor a mayor</option>
+                <option value="precio-desc">Precio: mayor a menor</option>
+                <option value="nombre">Nombre (A-Z)</option>
+                <option value="novedad">Novedades</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="rejilla-productos" id="rejillaProductos"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- ------------------------------------------------- panel de carrito -->
+  <div class="modal-fondo oculto" id="fondoCarrito"></div>
+  <aside class="carrito-panel" id="panelCarrito" aria-label="Carrito de compras">
+    <div class="carrito-panel__cabecera">
+      <h3>Tu carrito</h3>
+      <button class="cerrar" type="button" id="botonCerrarCarrito" aria-label="Cerrar carrito">&times;</button>
+    </div>
+    <div class="carrito-panel__cuerpo" id="cuerpoCarrito"></div>
+  </aside>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <div class="pie__rejilla">
+        <div>
+          <h4>Sockbuster Video &amp; Socks</h4>
+          <p style="font-size:.9rem;max-width:44ch">
+            Prototipo funcional de arquitectura de software. Modelado con el paradigma 4+1 de
+            vistas UML y desplegado en GitHub Pages.
+          </p>
+        </div>
+        <div>
+          <h4>Sitio</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="catalogo.html">Catalogo</a></li>
+            <li><a href="diagramas.html">Diagramas UML</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Arquitectura</h4>
+          <ul>
+            <li>Vista Logica</li>
+            <li>Vista de Desarrollo</li>
+            <li>Vista de Procesos</li>
+            <li>Vista Fisica</li>
+            <li>Escenarios</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pie__firma">
+        <span>Modelamiento de soluciones informaticas &middot; TI3025</span>
+        <span>Prototipo desplegado en GitHub Pages &middot; 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/paginas/catalogo.js"></script>
+</body>
+</html>

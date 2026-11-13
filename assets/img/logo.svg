@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Sockbuster">
+  <title>Sockbuster</title>
+  <defs>
+    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8402a"/>
+      <stop offset="100%" stop-color="#8f1d10"/>
+    </linearGradient>
+  </defs>
+  <path d="M22 12 Q32 7 42 12 L42 34 Q42 40 47 44 L52 48 Q57 52 57 57 Q57 61 51 61 L27 61 Q17 61 17 51 L17 19 Q17 14 22 12 Z" fill="url(#lg)" stroke="#5d120a" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M17 22 Q32 17 42 22 L42 13 Q32 8 22 13 Q17 15 17 22 Z" fill="#f7f3ea"/>
+  <path d="M44 47 L52 52 L44 57 L49 57 L44 61 L39 61 L44 55 L39 55 Z" fill="#ffd23f"/>
+</svg>

@@ -1,0 +1,159 @@
+@startuml
+'=====================================================================
+' VISTA LOGICA - DIAGRAMA DE CLASES (Paradigma 4+1)
+' Caso de estudio: Sockbuster Video & Socks
+' Criterio de evaluacion 2.1.2
+'=====================================================================
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #1D2733
+  ArrowColor #1D2733
+}
+
+'------------------------------------------------------- IDENTIDAD
+class "Usuario" {
+  +id : Long
+  +nombre : String
+  +email : String
+  +rol : Rol
+  +creadoEn : DateTime
+  +iniciarSesion(password : String) : Token
+  +registrarResena(puntaje : Integer, comentario : String) : Resena
+  +esAdministrador() : Boolean
+}
+
+enum "Rol" {
+  CLIENTE
+  ADMIN
+}
+
+class "Credenciales" {
+  +email : String
+  +sal : String
+  +hash : String
+  +validar(password : String) : Boolean
+}
+
+'------------------------------------------------------- CATALOGO
+class "Calcetín" {
+  +id : Long
+  +nombre : String
+  +descripcion : String
+  +precio : Decimal
+  +stock : Integer
+  +tallas : List<String>
+  +colorPrimario : String
+  +imagen : String
+  +activo : Boolean
+  +actualizarStock(cantidad : Integer) : void
+  +actualizarPrecio(precio : Decimal) : void
+  +estaAgotado() : Boolean
+}
+
+class "Colección" {
+  +id : Long
+  +nombre : String
+  +descripcion : String
+}
+
+class "PelículaSerie" {
+  +id : Long
+  +titulo : String
+  +anio : Integer
+  +tipo : TipoObra
+}
+
+enum "TipoObra" {
+  PELICULA
+  SERIE
+}
+
+'------------------------------------------------------- PEDIDOS
+class "Pedido" {
+  +id : String
+  +numero : Integer
+  +fecha : DateTime
+  +total : Decimal
+  +estado : EstadoPedido
+  +metodoPago : MetodoPago
+  +autorizacionPago : String
+  +confirmar() : void
+  +calcularTotal() : Decimal
+}
+
+enum "EstadoPedido" {
+  PENDIENTE
+  CONFIRMADO
+  DESPACHADO
+}
+
+enum "MetodoPago" {
+  TARJETA
+  TRANSFERENCIA
+}
+
+class "DetallePedido" {
+  +id : Long
+  +cantidad : Integer
+  +precioUnitario : Decimal
+  +subtotal() : Decimal
+}
+
+'------------------------------------------------------- CARRITO
+class "Carrito" {
+  +id : Long
+  +actualizadoEn : DateTime
+  +agregarItem(calcetin : Calcetín, cantidad : Integer, talla : String) : void
+  +modificarCantidad(calcetin : Calcetín, cantidad : Integer) : void
+  +vaciar() : void
+  +total() : Decimal
+}
+
+class "ItemCarrito" {
+  +cantidad : Integer
+  +talla : String
+  +precioUnitario : Decimal
+  +subtotal() : Decimal
+}
+
+'------------------------------------------------------- REPUTACION
+class "Reseña" {
+  +id : Long
+  +puntaje : Integer
+  +comentario : String
+  +fecha : DateTime
+}
+
+'================================================= ASOCIACIONES
+Usuario "1" o-- "1" Credenciales : posee
+Usuario "1" --> "0..*" Pedido : realiza
+Usuario "1" --> "0..1" Carrito : mantiene
+Usuario "1" --> "0..*" Reseña : escribe
+
+Colección "1" --> "0..*" Calcetín : clasifica
+PelículaSerie "1" --> "0..*" Calcetín : inspira
+
+Carrito "1" *-- "0..*" ItemCarrito : contiene
+ItemCarrito "0..*" --> "1" Calcetín : producto
+
+Pedido "1" *-- "1..*" DetallePedido : contiene
+DetallePedido "0..*" --> "1" Calcetín : producto
+Pedido "0..*" --> "1" MetodoPago : paga_con
+Pedido "1" --> "1" EstadoPedido : presenta
+
+Calcetín "1" --> "0..*" Reseña : recibe
+
+note right of "Usuario"
+  El control de acceso a las operaciones
+  administrativas se resuelve con el rol
+  ADMIN y un token JWT (RNF02).
+end note
+
+note bottom of "Calcetín"
+  RF01 y RF03: la entidad central del
+  catalogo y del inventario.
+end note
+@enduml

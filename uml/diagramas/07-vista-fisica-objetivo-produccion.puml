@@ -1,0 +1,71 @@
+@startuml
+'=====================================================================
+' VISTA FISICA - ARQUITECTURA OBJETIVO DE PRODUCCION
+' Evolucion propuesta del prototipo: API con base de datos relacional e
+' IdP externo. NO es el despliegue actual: se documenta aparte y de
+' forma explicita para no confundir la topologia real con la objetivo.
+' Criterio de evaluacion 2.1.5
+'=====================================================================
+skinparam shadowing false
+skinparam linetype ortho
+skinparam node {
+  BackgroundColor #FFFFFF
+  BorderColor #1D2733
+}
+skinparam database {
+  BackgroundColor #F4F0E6
+  BorderColor #1D2733
+}
+skinparam rectangle {
+  BackgroundColor #FBF8F1
+  BorderColor #8A7F63
+}
+
+rectangle "Nube de produccion" as Nube {
+  node "CDN / WAF" as CDNProd
+
+  node "API REST\n(serverless)" as API {
+    note right of API
+      Mismo dominio que el prototipo:
+      Catalogo, Pedidos, Resenas,
+      Administracion, Identidad
+    end note
+  }
+
+  node "IdP externo\n(OIDC / JWKS)" as IdP {
+    note left of IdP
+      Emite y rota los JWT
+      El API valida la firma contra
+      el JWKS publicado
+    end note
+  }
+
+  node "Servicio de imagenes\n(almacenamiento + CDN)" as Imagenes
+}
+
+node "Navegador del Cliente" as ClienteProd
+
+database "PostgreSQL\n(catalogo, pedidos, resenas,\nstock, usuarios)" as DB
+
+node "Pasarela de Pago\n(tercero)" as PagoProd
+
+'--------------------------------------------------- conexiones
+ClienteProd --> CDNProd : "HTTPS"
+CDNProd --> API : "REST / HTTPS"
+CDNProd --> Imagenes : "estaticos e imagenes"
+API --> DB : "SQL (TLS)"
+API --> IdP : "validacion de token (JWKS)"
+API --> PagoProd : "autorizacion de pago"
+API --> Imagenes : "URLs de imagenes"
+
+note as NotaObjetivo
+  Esta topologia es la evolucion natural del
+  prototipo y la que exige el caso de estudio
+  completo (base de datos real, autenticacion
+  delegada y pagos reales).
+
+  El despliegue entregado en linea es el
+  documentado en el diagrama de despliegue
+  anterior: este scheme no esta desplegado.
+end note
+@enduml

@@ -1,0 +1,72 @@
+@startuml
+'=====================================================================
+' QUINTA VISTA - ESCENARIOS: DIAGRAMA DE CASOS DE USO
+' Articula las cuatro vistas anteriores en un unico modelo de
+' comportamiento. Criterio de evaluacion 2.1.6
+'=====================================================================
+skinparam shadowing false
+skinparam linetype ortho
+skinparam actor {
+  BorderColor #1D2733
+  BackgroundColor #FFFFFF
+}
+skinparam usecase {
+  BorderColor #1D2733
+  BackgroundColor #FFFFFF
+}
+skinparam rectangle {
+  BackgroundColor #FBF8F1
+  BorderColor #8A7F63
+}
+
+actor "Visitante" as Visitante
+actor "Cliente\nregistrado" as Cliente
+actor "Administrador" as Admin
+actor "Pasarela\nde Pago" as Pago
+
+rectangle "Sockbuster Video & Socks" as Sistema {
+
+  usecase "UC-01 Explorar\ncatálogo" as UC01
+  usecase "UC-02 Filtrar catálogo\npor colección, precio, talla\ny stock" as UC02
+  usecase "UC-03 Consultar ficha\nde producto" as UC03
+  usecase "UC-04 Registrar cuenta" as UC04
+  usecase "UC-05 Iniciar sesión" as UC05
+  usecase "UC-06 Gestionar carrito\nde compras" as UC06
+  usecase "UC-07 Confirmar pedido\n(checkout)" as UC07
+  usecase "UC-08 Publicar reseña\n(1 a 5 estrellas)" as UC08
+  usecase "UC-09 Registrar modelo\nde calcetín" as UC09
+  usecase "UC-10 Asociar modelo a\npelícula o serie" as UC10
+  usecase "UC-11 Actualizar stock\ny precio" as UC11
+  usecase "UC-12 Autorizar pago" as UC12
+}
+
+'-------------------------------------------------- asociaciones
+Visitante -- UC01
+Visitante -- UC02
+Visitante -- UC03
+Visitante -- UC04
+Visitante -- UC05
+Visitante -- UC06
+Visitante -- UC07
+
+Cliente -- UC06
+Cliente -- UC07
+Cliente -- UC08
+
+Admin -- UC02
+Admin -- UC09
+Admin -- UC10
+Admin -- UC11
+
+Pago -- UC12
+
+'-------------------------------------------------- relations
+UC02 ..> UC01 : <<extend>>
+UC06 .> UC03 : <<extend>>
+UC07 .> UC06 : <<include>>
+UC07 .> UC12 : <<include>>
+UC08 .> UC05 : <<include>>
+UC09 .> UC11 : <<include>>
+UC10 .> UC09 : <<include>>
+
+@enduml

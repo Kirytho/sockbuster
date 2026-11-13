@@ -1,0 +1,707 @@
+{
+  "version": 1,
+  "generadoPor": "scripts/generar_catalogo.py",
+  "colecciones": [
+    {
+      "id": 1,
+      "nombre": "Ciencia Ficción",
+      "slug": "ciencia-ficcion",
+      "descripcion": "Tripulaciones, robots y mundos de la ficcion espacial.",
+      "color": "#3b6fd4",
+      "icono": "planeta"
+    },
+    {
+      "id": 2,
+      "nombre": "Terror 80s",
+      "slug": "terror-80s",
+      "descripcion": "Pesadillas clasicas del cine de terror de los ochenta.",
+      "color": "#8b2f6b",
+      "icono": "fantasma"
+    },
+    {
+      "id": 3,
+      "nombre": "Series de Drama",
+      "slug": "series-drama",
+      "descripcion": "Tronos, poder, dinero y decisiones que pesan.",
+      "color": "#1f7a5c",
+      "icono": "corona"
+    },
+    {
+      "id": 4,
+      "nombre": "Animación",
+      "slug": "animacion",
+      "descripcion": "Pixeles,otas de anime y animated clasicos.",
+      "color": "#d98324",
+      "icono": "corazon"
+    }
+  ],
+  "peliculasSeries": [
+    {
+      "id": 1,
+      "titulo": "Star Wars",
+      "anio": 1977,
+      "tipo": "PELICULA",
+      "coleccionId": 1
+    },
+    {
+      "id": 2,
+      "titulo": "Blade Runner",
+      "anio": 1982,
+      "tipo": "PELICULA",
+      "coleccionId": 1
+    },
+    {
+      "id": 3,
+      "titulo": "The Matrix",
+      "anio": 1999,
+      "tipo": "PELICULA",
+      "coleccionId": 1
+    },
+    {
+      "id": 4,
+      "titulo": "Dune",
+      "anio": 2021,
+      "tipo": "PELICULA",
+      "coleccionId": 1
+    },
+    {
+      "id": 5,
+      "titulo": "2001: A Space Odyssey",
+      "anio": 1968,
+      "tipo": "PELICULA",
+      "coleccionId": 1
+    },
+    {
+      "id": 6,
+      "titulo": "A Space Odyssey 2",
+      "anio": 1999,
+      "tipo": "PELICULA",
+      "coleccionId": 1
+    },
+    {
+      "id": 7,
+      "titulo": "The Shining",
+      "anio": 1980,
+      "tipo": "PELICULA",
+      "coleccionId": 2
+    },
+    {
+      "id": 8,
+      "titulo": "A Nightmare on Elm Street",
+      "anio": 1984,
+      "tipo": "PELICULA",
+      "coleccionId": 2
+    },
+    {
+      "id": 9,
+      "titulo": "The Exorcist",
+      "anio": 1973,
+      "tipo": "PELICULA",
+      "coleccionId": 2
+    },
+    {
+      "id": 10,
+      "titulo": "Halloween",
+      "anio": 1978,
+      "tipo": "PELICULA",
+      "coleccionId": 2
+    },
+    {
+      "id": 11,
+      "titulo": "Alien",
+      "anio": 1979,
+      "tipo": "PELICULA",
+      "coleccionId": 2
+    },
+    {
+      "id": 12,
+      "titulo": "Game of Thrones",
+      "anio": 2011,
+      "tipo": "SERIE",
+      "coleccionId": 3
+    },
+    {
+      "id": 13,
+      "titulo": "The Sopranos",
+      "anio": 1999,
+      "tipo": "SERIE",
+      "coleccionId": 3
+    },
+    {
+      "id": 14,
+      "titulo": "Breaking Bad",
+      "anio": 2008,
+      "tipo": "SERIE",
+      "coleccionId": 3
+    },
+    {
+      "id": 15,
+      "titulo": "Better Call Saul",
+      "anio": 2015,
+      "tipo": "SERIE",
+      "coleccionId": 3
+    },
+    {
+      "id": 16,
+      "titulo": "The Wire",
+      "anio": 2002,
+      "tipo": "SERIE",
+      "coleccionId": 3
+    },
+    {
+      "id": 17,
+      "titulo": "Akira",
+      "anio": 1988,
+      "tipo": "PELICULA",
+      "coleccionId": 4
+    },
+    {
+      "id": 18,
+      "titulo": "El Principito",
+      "anio": 1973,
+      "tipo": "PELICULA",
+      "coleccionId": 4
+    },
+    {
+      "id": 19,
+      "titulo": "Los Simpson",
+      "anio": 1989,
+      "tipo": "SERIE",
+      "coleccionId": 4
+    },
+    {
+      "id": 20,
+      "titulo": "Dragon Ball",
+      "anio": 1986,
+      "tipo": "SERIE",
+      "coleccionId": 4
+    },
+    {
+      "id": 21,
+      "titulo": "Totoro",
+      "anio": 1988,
+      "tipo": "PELICULA",
+      "coleccionId": 4
+    }
+  ],
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Calcetin Jedi",
+      "descripcion": "Tejido con planeta en órbita y estrellas tejidas a mano.",
+      "precio": 19990,
+      "stock": 42,
+      "tallas": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colorPrimario": "#e8b931",
+      "colorSecundario": "#3b2a12",
+      "motivo": "planeta",
+      "coleccionId": 1,
+      "peliculaSerieId": 1,
+      "imagen": "assets/img/calcetines/calcetin-01.svg",
+      "destacado": true,
+      "activo": true
+    },
+    {
+      "id": 2,
+      "nombre": "Calcetin C3PO",
+      "descripcion": "Estampado robotico con costuras de circuito y ojo LED.",
+      "precio": 18990,
+      "stock": 27,
+      "tallas": [
+        "S",
+        "M",
+        "L"
+      ],
+      "colorPrimario": "#d8d3c4",
+      "colorSecundario": "#8a7f63",
+      "motivo": "robot",
+      "coleccionId": 1,
+      "peliculaSerieId": 1,
+      "imagen": "assets/img/calcetines/calcetin-02.svg",
+      "destacado": false,
+      "activo": true
+    },
+    {
+      "id": 3,
+      "nombre": "Calcetin Blade Runner",
+      "descripcion": "Franjas verticales con motivo de lluvia y brillo neon.",
+      "precio": 21990,
+      "stock": 15,
+      "tallas": [
+        "M",
+        "L"
+      ],
+      "colorPrimario": "#1d2733",
+      "colorSecundario": "#00e5c3",
+      "motivo": "lluvia",
+      "coleccionId": 1,
+      "peliculaSerieId": 2,
+      "imagen": "assets/img/calcetines/calcetin-03.svg",
+      "destacado": false,
+      "activo": true
+    },
+    {
+      "id": 4,
+      "nombre": "Calcetin replicante",
+      "descripcion": "Estampado robotico con costuras de circuito y ojo LED.",
+      "precio": 24990,
+      "stock": 8,
+      "tallas": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "colorPrimario": "#0f1114",
+      "colorSecundario": "#ff3b6b",
+      "motivo": "robot",
+      "coleccionId": 1,
+      "peliculaSerieId": 2,
+      "imagen": "assets/img/calcetines/calcetin-04.svg",
+      "destacado": true,
+      "activo": true
+    },
+    {
+      "id": 5,
+      "nombre": "Calcetin Neo",
+      "descripcion": "Base oscura con la gota de verde Matrix que recorre el calcetin.",
+      "precio": 21990,
+      "stock": 33,
+      "tallas": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colorPrimario": "#1a1a1a",
+      "colorSecundario": "#3fa93f",
+      "motivo": "gota",
+      "coleccionId": 1,
+      "peliculaSerieId": 3,
+      "imagen": "assets/img/calcetines/calcetin-05.svg",
+      "destacado": true,
+      "activo": true
+    },
+    {
+      "id": 6,
+      "nombre": "Calcetin Zion",
+      "descripcion": "Tejido con planeta en órbita y estrellas tejidas a mano.",
+      "precio": 18990,
+      "stock": 19,
+      "tallas": [
+        "S",
+        "M"
+      ],
+      "colorPrimario": "#2b2b2b",
+      "colorSecundario": "#9b59b6",
+      "motivo": "planeta",
+      "coleccionId": 1,
+      "peliculaSerieId": 3,
+      "imagen": "assets/img/calcetines/calcetin-06.svg",
+      "destacado": false,
+      "activo": true
+    },
+    {
+      "id": 7,
+      "nombre": "Calcetin Dune",
+      "descripcion": "Degradado desertico con un sol de dos tonos sobre el tobillo.",
+      "precio": 24990,
+      "stock": 24,
+      "tallas": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "colorPrimario": "#c8a165",
+      "colorSecundario": "#3d2b1f",
+      "motivo": "sol",
+      "coleccionId": 1,
+      "peliculaSerieId": 4,
+      "imagen": "assets/img/calcetines/calcetin-07.svg",
+      "destacado": true,
+      "activo": true
+    },
+    {
+      "id": 8,
+      "nombre": "Calcetin Fremen",
+      "descripcion": "Degradado desertico con un sol de dos tonos sobre el tobillo.",
+      "precio": 19990,
+      "stock": 11,
+      "tallas": [
+        "M",
+        "L"
+      ],
+      "colorPrimario": "#8a6a3a",
+      "colorSecundario": "#c8a165",
+      "motivo": "sol",
+      "coleccionId": 1,
+      "peliculaSerieId": 4,
+      "imagen": "assets/img/calcetines/calcetin-08.svg",
+      "destacado": false,
+      "activo": true
+    },
+    {
+      "id": 9,
+      "nombre": "Calcetin HAL 9000",
+      "descripcion": "Base oscura con la gota de verde Matrix que recorre el calcetin.",
+      "precio": 18990,
+      "stock": 6,
+      "tallas": [
+        "S",
+        "M"
+      ],
+      "colorPrimario": "#0b3d91",
+      "colorSecundario": "#ff3b30",
+      "motivo": "gota",
+      "coleccionId": 1,
+      "peliculaSerieId": 5,
+      "imagen": "assets/img/calcetines/calcetin-09.svg",
+      "destacado": false,
+      "activo": true
+    },
+    {
+      "id": 10,
+      "nombre": "Calcetin Odisea",
+      "descripcion": "Tejido con planeta en órbita y estrellas tejidas a mano.",
+      "precio": 21990,
+      "stock": 14,
+      "tallas": [
+        "L",
+        "XL"
+      ],
+      "colorPrimario": "#20222b",
+      "colorSecundario": "#e8e8e8",
+      "motivo": "planeta",
+      "coleccionId": 1,
+      "peliculaSerieId": 5,
+      "imagen": "assets/img/calcetines/calcetin-10.svg",
+      "destacado": false,
+      "activo": true
+    },
+    {
+      "id": 11,
+      "nombre": "Calcetin Jack Torrance",
+      "descripcion": "Franjas verticales con motivo de lluvia y brillo neon.",
+      "precio": 21990,
+      "stock": 21,
+      "tallas": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "colorPrimario": "#7a1416",
+      "colorSecundario": "#e8b931",
+      "motivo": "lluvia",
+      "coleccionId": 2,
+      "peliculaSerieId": 7,
+      "imagen": "assets/img/calcetines/calcetin-11.svg",
+      "destacado": true,
+      "activo": true
+    },
+    {
+      "id": 12,
+      "nombre": "Calcetin Freddy Krueger",
+      "descripcion": "Huella fantasmagorica en contraste sobre fondo Oscuro.",
+      "precio": 24990,
+      "stock": 9,
+      "tallas": [
+        "M",
+        "L"
+      ],
+      "colorPrimario": "#4a1b1b",
+      "colorSecundario": "#a8321f",
+      "motivo": "fantasma",
+      "coleccionId": 2,
+      "peliculaSerieId": 8,
+      "imagen": "assets/img/calcetines/calcetin-12.svg",
+      "destacado": true,
+      "activo": true
+    },
+    {
+      "id": 13,
+      "nombre": "Calcetin Regan",
+      "descripcion": "Huella fantasmagorica en contraste sobre fondo Oscuro.",
+      "precio": 19990,
+      "stock": 17,
+      "tallas": [
+        "S",
+        "M",
+        "L"
+      ],
+      "colorPrimario": "#d9c7b0",
+      "colorSecundario": "#7a1416",
+      "motivo": "fantasma",
+      "coleccionId": 2,
+      "peliculaSerieId": 9,
+      "imagen": "assets/img/calcetines/calcetin-13.svg",
+      "destacado": false,
+      "activo": true
+    },
+    {
+      "id": 14,
+      "nombre": "Calcetin Myers",
+      "descripcion": "Calabaza tallada y Ptrera con contraste naranja.",
+      "precio": 22990,
+      "stock": 12,
+      "tallas": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "colorPrimario": "#3c6e3f",
+      "colorSecundario": "#2a2a2a",
+      "motivo": "calabaza",
+      "coleccionId": 2,
+      "peliculaSerieId": 10,
+      "imagen": "assets/img/calcetines/calcetin-14.svg",
+      "destacado": true,
+      "activo": true
+    },
+    {
+      "id": 15,
+      "nombre": "Calcetin Xenomorph",
+      "descripcion": "Base oscura con la gota de verde Matrix que recorre el calcetin.",
+      "precio": 24990,
+      "stock": 4,
+      "tallas": [
+        "L",
+        "XL"
+      ],
+      "colorPrimario": "#2b3a2e",
+      "colorSecundario": "#111111",
+      "motivo": "gota",
+      "coleccionId": 2,
+      "peliculaSerieId": 11,
+      "imagen": "assets/img/calcetines/calcetin-15.svg",
+      "destacado": false,
+      "activo": true
+    },
+    {
+      "id": 16,
+      "nombre": "Calcetin Jon Snow",
+      "descripcion": "Bordado de corona y escudos en la parte superior.",
+      "precio": 21990,
+      "stock": 38,
+      "tallas": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colorPrimario": "#3d3d3d",
+      "colorSecundario": "#8a8a8a",
+      "motivo": "corona",
+      "coleccionId": 3,
+      "peliculaSerieId": 12,
+      "imagen": "assets/img/calcetines/calcetin-16.svg",
+      "destacado": true,
+      "activo": true
+    },
+    {
+      "id": 17,
+      "nombre": "Calcetin Tony Soprano",
+      "descripcion": "Bordado de corona y escudos en la parte superior.",
+      "precio": 22990,
+      "stock": 16,
+      "tallas": [
+        "M",
+        "L"
+      ],
+      "colorPrimario": "#1f2430",
+      "colorSecundario": "#8b0000",
+      "motivo": "corona",
+      "coleccionId": 3,
+      "peliculaSerieId": 13,
+      "imagen": "assets/img/calcetines/calcetin-17.svg",
+      "destacado": false,
+      "activo": true
+    },
+    {
+      "id": 18,
+      "nombre": "Calcetin Heisenberg",
+      "descripcion": "Base oscura con la gota de verde Matrix que recorre el calcetin.",
+      "precio": 21990,
+      "stock": 25,
+      "tallas": [
+        "S",
+        "M",
+        "L"
+      ],
+      "colorPrimario": "#2f4f4f",
+      "colorSecundario": "#d4d400",
+      "motivo": "gota",
+      "coleccionId": 3,
+      "peliculaSerieId": 14,
+      "imagen": "assets/img/calcetines/calcetin-18.svg",
+      "destacado": true,
+      "activo": true
+    },
+    {
+      "id": 19,
+      "nombre": "Calcetin Saul Goodman",
+      "descripcion": "Rayo electrico de alta costura sobre fondo liso.",
+      "precio": 19990,
+      "stock": 31,
+      "tallas": [
+        "M",
+        "L"
+      ],
+      "colorPrimario": "#c9a227",
+      "colorSecundario": "#1a1a1a",
+      "motivo": "rayo",
+      "coleccionId": 3,
+      "peliculaSerieId": 15,
+      "imagen": "assets/img/calcetines/calcetin-19.svg",
+      "destacado": false,
+      "activo": true
+    },
+    {
+      "id": 20,
+      "nombre": "Calcetin Bunk Moreland",
+      "descripcion": "Bordado de corona y escudos en la parte superior.",
+      "precio": 18990,
+      "stock": 13,
+      "tallas": [
+        "S",
+        "M"
+      ],
+      "colorPrimario": "#37474f",
+      "colorSecundario": "#cfd8dc",
+      "motivo": "corona",
+      "coleccionId": 3,
+      "peliculaSerieId": 16,
+      "imagen": "assets/img/calcetines/calcetin-20.svg",
+      "destacado": false,
+      "activo": true
+    },
+    {
+      "id": 21,
+      "nombre": "Calcetin Kaneda",
+      "descripcion": "Rayo electrico de alta costura sobre fondo liso.",
+      "precio": 24990,
+      "stock": 18,
+      "tallas": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "colorPrimario": "#e63946",
+      "colorSecundario": "#1d1d1d",
+      "motivo": "rayo",
+      "coleccionId": 4,
+      "peliculaSerieId": 17,
+      "imagen": "assets/img/calcetines/calcetin-21.svg",
+      "destacado": true,
+      "activo": true
+    },
+    {
+      "id": 22,
+      "nombre": "Calcetin Principito",
+      "descripcion": "Tejido con planeta en órbita y estrellas tejidas a mano.",
+      "precio": 17990,
+      "stock": 29,
+      "tallas": [
+        "S",
+        "M",
+        "L"
+      ],
+      "colorPrimario": "#f4a259",
+      "colorSecundario": "#2a6f97",
+      "motivo": "planeta",
+      "coleccionId": 4,
+      "peliculaSerieId": 18,
+      "imagen": "assets/img/calcetines/calcetin-22.svg",
+      "destacado": false,
+      "activo": true
+    },
+    {
+      "id": 23,
+      "nombre": "Calcetin Simpson",
+      "descripcion": "Corazon de pixel con la paleta clasica de la serie.",
+      "precio": 16990,
+      "stock": 45,
+      "tallas": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colorPrimario": "#ffd23f",
+      "colorSecundario": "#3a7ca5",
+      "motivo": "corazon",
+      "coleccionId": 4,
+      "peliculaSerieId": 19,
+      "imagen": "assets/img/calcetines/calcetin-23.svg",
+      "destacado": true,
+      "activo": true
+    },
+    {
+      "id": 24,
+      "nombre": "Calcetin Goku",
+      "descripcion": "Rayo electrico de alta costura sobre fondo liso.",
+      "precio": 22990,
+      "stock": 22,
+      "tallas": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "colorPrimario": "#f77f00",
+      "colorSecundario": "#1d3557",
+      "motivo": "rayo",
+      "coleccionId": 4,
+      "peliculaSerieId": 20,
+      "imagen": "assets/img/calcetines/calcetin-24.svg",
+      "destacado": false,
+      "activo": true
+    },
+    {
+      "id": 25,
+      "nombre": "Calcetin Totoro",
+      "descripcion": "Nubes redondas y una silueta de Totoro en el pie.",
+      "precio": 19990,
+      "stock": 26,
+      "tallas": [
+        "S",
+        "M",
+        "L"
+      ],
+      "colorPrimario": "#6b8f71",
+      "colorSecundario": "#f2e8cf",
+      "motivo": "nube",
+      "coleccionId": 4,
+      "peliculaSerieId": 21,
+      "imagen": "assets/img/calcetines/calcetin-25.svg",
+      "destacado": false,
+      "activo": true
+    },
+    {
+      "id": 26,
+      "nombre": "Calcetin Neiman",
+      "descripcion": "Rayo electrico de alta costura sobre fondo liso.",
+      "precio": 17990,
+      "stock": 0,
+      "tallas": [
+        "S",
+        "M"
+      ],
+      "colorPrimario": "#8a8a8a",
+      "colorSecundario": "#4a4a4a",
+      "motivo": "rayo",
+      "coleccionId": 1,
+      "peliculaSerieId": 1,
+      "imagen": "assets/img/calcetines/calcetin-26.svg",
+      "destacado": false,
+      "activo": true
+    }
+  ],
+  "usuarioAdminSemilla": {
+    "nombre": "Administrador",
+    "email": "admin@sockbuster.cl",
+    "rol": "ADMIN"
+  }
+}

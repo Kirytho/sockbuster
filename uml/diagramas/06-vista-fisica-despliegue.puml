@@ -1,0 +1,81 @@
+@startuml
+'=====================================================================
+' VISTA FISICA - DIAGRAMA DE DESPLIEGUE (topologia realmente desplegada)
+' Criterio de evaluacion 2.1.5 - responde RNF01 y RNF02
+'=====================================================================
+skinparam shadowing false
+skinparam linetype ortho
+skinparam node {
+  BackgroundColor #FFFFFF
+  BorderColor #1D2733
+}
+skinparam database {
+  BackgroundColor #F4F0E6
+  BorderColor #1D2733
+}
+skinparam rectangle {
+  BackgroundColor #FBF8F1
+  BorderColor #8A7F63
+}
+
+rectangle "Entorno GitHub (nube)" as Nube {
+  node "CDN de borde\nGitHub Pages Edge" as CDN {
+    note left of CDN
+      Terminacion TLS (HTTPS forzado)
+      Cache de estaticos
+      RNF01: carga inicial < 2 s
+      RNF02: canal seguro
+    end note
+  }
+
+  node "Servidor de origen\nGitHub Pages (artifact)" as Origen {
+    note right of Origen
+      Sirve index.html, catalogo.html,
+      diagramas.html, assets/ y data/
+      desde la rama main
+    end note
+  }
+
+  node "Pipeline CI/CD\nGitHub Actions" as CI {
+    note left of CI
+      Render de diagramas PlantUML
+      (scripts/renderizar_uml.sh)
+    end note
+  }
+}
+
+node "Navegador del Cliente\n(SPA estatica)" as Cliente {
+  artifact "index.html\ncatalogo.html\ndiagramas.html" as Paginas
+  component "Modulos ES\nassets/js/**" as Modulos
+  database "IndexedDB\n(usuarios, pedidos, reseñas,\nstock, carrito)" as BDLocal
+  component "Modulo JWT HS256\n(WebCrypto)" as Auth
+}
+
+database "Catalogo semilla\ndata/catalogo.json\n(solo lectura)" as Semilla
+
+'--------------------------------------------------- conexiones
+Cliente --> CDN : "HTTPS (TLS 1.3)\nGET /index.html"
+CDN --> Origen : "origen del contenido"
+Origen --> Semilla : "entrega el catalogo"
+Origen --> Modulos : "entrega los modulos JS"
+
+Modulos --> BDLocal : "lectura/escritura\n(API IndexedDB)"
+Modulos --> Auth : "firma y verifica tokens"
+Auth --> BDLocal : "lee credenciales (PBKDF2)"
+
+CI --> Origen : "publica el sitio\n(rama main)"
+
+note bottom of Cliente
+  El prototipo es 100% cliente: no existe
+  servidor de aplicacion ni base de datos
+  central. Esta topologia es la REAL del
+  despliegue, no una aspiracion.
+end note
+
+note right of Semilla
+  Catalogo de solo lectura versionado en el
+  repositorio. El stock editable y las resenas
+  se acumulan en el almacenamiento local del
+  navegador.
+end note
+@enduml

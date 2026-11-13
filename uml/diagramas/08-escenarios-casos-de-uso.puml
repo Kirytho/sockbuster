@@ -3,6 +3,14 @@
 ' QUINTA VISTA - ESCENARIOS: DIAGRAMA DE CASOS DE USO
 ' Articula las cuatro vistas anteriores en un unico modelo de
 ' comportamiento. Criterio de evaluacion 2.1.6
+'
+' Criterio de modelado aplicado:
+'  - «extend» marca un refinamiento opcional del caso base.
+'  - «include» marca un comportamiento que SIEMPRE se ejecuta dentro
+'    del caso que lo incluye (no una precondicion).
+'  - La generalizacion de actores evita repetir asociaciones: un
+'    cliente registrado es tambien visitante y un administrador es
+'    tambien cliente.
 '=====================================================================
 skinparam shadowing false
 skinparam linetype ortho
@@ -31,13 +39,14 @@ rectangle "Sockbuster Video & Socks" as Sistema {
   usecase "UC-03 Consultar ficha\nde producto" as UC03
   usecase "UC-04 Registrar cuenta" as UC04
   usecase "UC-05 Iniciar sesión" as UC05
-  usecase "UC-06 Gestionar carrito\nde compras" as UC06
+  usecase "UC-06 Consultar el carrito\nde compras" as UC06
   usecase "UC-07 Confirmar pedido\n(checkout)" as UC07
   usecase "UC-08 Publicar reseña\n(1 a 5 estrellas)" as UC08
   usecase "UC-09 Registrar modelo\nde calcetín" as UC09
   usecase "UC-10 Asociar modelo a\npelícula o serie" as UC10
-  usecase "UC-11 Actualizar stock\ny precio" as UC11
+  usecase "UC-11 Gestionar stock\ny precio" as UC11
   usecase "UC-12 Autorizar pago" as UC12
+  usecase "UC-13 Modificar el carrito\n(agregar, quitar, cambiar\ncantidades)" as UC13
 }
 
 '-------------------------------------------------- asociaciones
@@ -48,25 +57,52 @@ Visitante -- UC04
 Visitante -- UC05
 Visitante -- UC06
 Visitante -- UC07
+Visitante -- UC13
 
-Cliente -- UC06
-Cliente -- UC07
+Cliente --|> Visitante : es un
 Cliente -- UC08
 
-Admin -- UC02
+Admin --|> Cliente : es un
 Admin -- UC09
 Admin -- UC10
 Admin -- UC11
 
 Pago -- UC12
 
-'-------------------------------------------------- relations
+'-------------------------------------------------- relaciones
+' Filtrar y consultar la ficha son refinamientos opcionales de explorar.
 UC02 ..> UC01 : <<extend>>
-UC06 .> UC03 : <<extend>>
-UC07 .> UC06 : <<include>>
-UC07 .> UC12 : <<include>>
-UC08 .> UC05 : <<include>>
-UC09 .> UC11 : <<include>>
-UC10 .> UC09 : <<include>>
+UC03 ..> UC01 : <<extend>>
 
+' Confirmar un pedido SIEMPRE consulta el carrito y SIEMPRE autoriza el pago.
+UC07 ..> UC06 : <<include>>
+UC07 ..> UC12 : <<include>>
+
+' Modificar el carrito es un refinamiento opcional de consultarlo.
+UC13 ..> UC06 : <<extend>>
+
+' Publicar una reseña exige sesion iniciada: el inicio de sesion se
+' dispara dentro del propio flujo de publicacion.
+UC08 ..> UC05 : <<include>>
+
+' Registrar un modelo SIEMPRE define su stock y su precio inicial.
+UC09 ..> UC11 : <<include>>
+
+' Asociar una pelicula o serie es un refinamiento opcional: se hace al
+' registrar el modelo, pero tambien sobre un modelo ya existente.
+UC10 ..> UC09 : <<extend>>
+
+note as NotaRelaciones
+  «include» = comportamiento que SIEMPRE ocurre.
+  «extend» = refinamiento opcional del caso base.
+
+  Confirmar un pedido incluye consultar el carrito y autorizar
+  el pago: ambos son incondicionales.
+
+  Modificar el carrito extiende a consultarlo: se puede mirar
+  el carrito sin tocarlo.
+
+  Asociar una pelicula o serie extiende al registro de modelo
+  porque se puede hacer sobre un modelo ya existente.
+end note
 @enduml

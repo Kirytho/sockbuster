@@ -130,7 +130,7 @@ class "Reseña" {
 '================================================= ASOCIACIONES
 Usuario "1" o-- "1" Credenciales : posee
 Usuario "1" --> "0..*" Pedido : realiza
-Usuario "1" --> "0..1" Carrito : mantiene
+Usuario "1" *-- "0..1" Carrito : mantiene
 Usuario "1" --> "0..*" Reseña : escribe
 
 Colección "1" --> "0..*" Calcetín : clasifica

@@ -379,7 +379,13 @@ p  { margin: 0 0 1rem; }
 .nav-vistas a:hover { background: var(--arena); text-decoration: none; color: var(--tinta); }
 .nav-vistas a.activo { background: var(--tinta); color: #fff; }
 
-.vista { padding: 2.4rem 0; border-bottom: 1px solid var(--borde); }
+.vista {
+  padding: 2.4rem 0;
+  border-bottom: 1px solid var(--borde);
+  /* La cabecera (66px) y la barra de vistas (~44px) son sticky: sin este
+     margen, el titulo de la seccion queda tapado al llegar por ancla. */
+  scroll-margin-top: 128px;
+}
 .vista:last-of-type { border-bottom: 0; }
 .vista__cabecera { display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap; margin-bottom: .5rem; }
 .vista__numero {

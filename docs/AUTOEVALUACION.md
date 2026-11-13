@@ -90,7 +90,8 @@ Evidencia de cobertura por requerimiento:
 **Nivel: Competente / Destacado (10 pts)**
 
 - `08-escenarios-casos-de-uso.puml`: actores (Visitante, Cliente registrado, Administrador y la
-  pasarela de pago como actor externo), 12 casos de uso con `<<include>>` y `<<extend>>` que
+  pasarela de pago como actor externo), 13 casos de uso con `<<include>>` y `<<extend>>`, y
+  generalizacion de actores (Cliente → Visitante, Administrador → Cliente), que
   **articulan las cuatro vistas anteriores**.
 - `09-escenarios-historias-usuario.puml`: 7 historias de usuario con criterios de aceptacion y
   el requerimiento y las vistas que cada una valida.

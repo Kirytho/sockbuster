@@ -134,17 +134,27 @@ function construirSeccion(diagrama) {
   );
 }
 
-/** Marca la vista activa en la navegacion superior al hacer scroll. */
+/**
+ * Marca la vista activa en la navegacion superior al hacer scroll.
+ * La vinculacion se hace por el atributo data-vista de cada seccion, no por
+ * id: los anchors de la barra apuntan al primer diagrama de cada vista, pero
+ * hay varios diagramas por vista.
+ */
 function observarVistas() {
   const enlaces = [...document.querySelectorAll('.nav-vistas a')];
   if (!enlaces.length || !('IntersectionObserver' in window)) return;
+
+  const idDelPrimerDiagramaDe = (vista) =>
+    [...document.querySelectorAll('.vista')].find((s) => s.dataset.vista === vista)?.id ?? null;
 
   const observador = new IntersectionObserver(
     (entradas) => {
       for (const entrada of entradas) {
         if (!entrada.isIntersecting) continue;
+        const vista = entrada.target.dataset.vista;
+        const primerId = idDelPrimerDiagramaDe(vista);
         for (const enlace of enlaces) {
-          enlace.classList.toggle('activo', enlace.getAttribute('href') === `#${entrada.target.id}`);
+          enlace.classList.toggle('activo', enlace.getAttribute('href') === `#${primerId}`);
         }
       }
     },

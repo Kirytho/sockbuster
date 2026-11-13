@@ -90,7 +90,7 @@ function construirSeccion(diagrama) {
     loading: 'lazy',
   });
 
-  const codigo = crear('pre', { class: 'fuente-code' }, 'Cargando fuente...');
+  const codigo = crear('pre', { class: 'fuente-code' }, 'Cargando fuente…');
   const detalle = crear(
     'details',
     { class: 'fuente' },

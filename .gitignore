@@ -16,3 +16,6 @@ rubrica.txt
 # base de conocimiento local del agente
 .megamemory/
 .~lock.*#
+
+# previews de diseno (no se publican)
+.previews/

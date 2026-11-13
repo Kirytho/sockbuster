@@ -3,21 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Catalogo - Sockbuster Video &amp; Socks</title>
-  <meta name="description" content="Catalogo interactivo de calcetines tematicos de Sockbuster: filtros por coleccion, precio, talla y stock, carrito de compras, checkout y panel de administracion.">
+  <title>Catálogo · Sockbuster Video &amp; Socks — Edición Navidad 2026</title>
+  <meta name="description" content="Catálogo interactivo de calcetines tematicos de edición navideña: filtros por coleccion, precio, talla y stock, carrito de compras, checkout y panel de administración.">
+  <meta name="theme-color" content="#0e2a1f">
   <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
   <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
 <body>
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+  <div class="cinta" role="status">
+    <strong>Edición Navidad 2026</strong> · Envío gratis en compras sobre $50.000 · Devolución gratis hasta el 7 de enero
+  </div>
+
   <header class="cabecera">
     <div class="contenedor cabecera__fila">
-      <a class="marca" href="index.html">
-        <img src="assets/img/logo.svg" alt="Logo de Sockbuster" width="34" height="34">
+      <a class="marca" href="index.html" aria-label="Sockbuster - inicio">
+        <span class="marca__cuadro"><img src="assets/img/logo.svg" alt="" width="30" height="30"></span>
         <span>SOCK<b>BUSTER</b></span>
       </a>
       <nav class="nav-principal" aria-label="Navegacion principal">
         <a href="index.html">Inicio</a>
-        <a href="catalogo.html">Catalogo</a>
+        <a href="catalogo.html" class="activo">Catálogo</a>
         <a href="diagramas.html">Diagramas UML</a>
       </nav>
       <div class="acciones-cabecera">
@@ -30,7 +37,7 @@
     </div>
   </header>
 
-  <main class="seccion">
+  <main id="contenido" class="seccion">
     <div class="contenedor">
       <div class="seccion__cabecera">
         <div class="eyebrow">RF01 &middot; Catalogo por colecciones tematicas</div>
@@ -44,18 +51,18 @@
       <div class="layout-catalogo">
         <!-- ------------------------------------------------ filtros -->
         <aside class="panel-filtros" id="panelFiltros" aria-label="Filtros del catalogo">
-          <p style="color:var(--tinta-suave);font-size:.9rem">Cargando filtros...</p>
+          <p style="color:var(--tinta-suave);font-size:.9rem">Cargando filtros…</p>
         </aside>
 
         <!-- ------------------------------------------------ resultados -->
         <section>
           <div class="buscador">
-            <input type="search" id="busqueda" placeholder="Buscar por nombre o descripcion..." aria-label="Buscar en el catalogo">
+            <input type="search" id="busqueda" placeholder="Buscar por nombre, serie o descripción…" aria-label="Buscar en el catalogo">
           </div>
 
           <div class="barra-resultados">
             <div>
-              <p id="resumenResultados">Cargando catalogo...</p>
+              <p id="resumenResultados">Cargando catálogo…</p>
               <div class="chips" id="chipsActivos"></div>
             </div>
             <div style="display:flex;align-items:center;gap:.5rem">
@@ -90,34 +97,34 @@
     <div class="contenedor">
       <div class="pie__rejilla">
         <div>
-          <h4>Sockbuster Video &amp; Socks</h4>
-          <p style="font-size:.9rem;max-width:44ch">
+          <h4>Sockbuster Video &amp; Socks · Edición Navidad</h4>
+          <p style="font-size:.9rem;max-width:46ch">
             Prototipo funcional de arquitectura de software. Modelado con el paradigma 4+1 de
-            vistas UML y desplegado en GitHub Pages.
+            vistas UML y desplegado en GitHub Pages. Hecho con cariño para quienes ven cine en pantuflas.
           </p>
         </div>
         <div>
           <h4>Sitio</h4>
           <ul>
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="catalogo.html">Catalogo</a></li>
+            <li><a href="catalogo.html">Catálogo</a></li>
             <li><a href="diagramas.html">Diagramas UML</a></li>
           </ul>
         </div>
         <div>
           <h4>Arquitectura</h4>
           <ul>
-            <li>Vista Logica</li>
+            <li>Vista Lógica</li>
             <li>Vista de Desarrollo</li>
             <li>Vista de Procesos</li>
-            <li>Vista Fisica</li>
+            <li>Vista Física</li>
             <li>Escenarios</li>
           </ul>
         </div>
       </div>
       <div class="pie__firma">
-        <span>Modelamiento de soluciones informaticas &middot; TI3025</span>
-        <span>Prototipo desplegado en GitHub Pages &middot; 2026</span>
+        <span>Modelamiento de soluciones informáticas · TI3025</span>
+        <span>Prototipo desplegado en GitHub Pages · 2026</span>
       </div>
     </div>
   </footer>

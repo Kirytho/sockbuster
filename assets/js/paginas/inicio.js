@@ -12,6 +12,14 @@ import { obtenerColecciones } from '../datos/catalogo.js';
 import { destacados } from '../dominio/producto.js';
 import { avisar } from '../presentacion/aviso.js';
 
+/** Imagen de edicion navideña por coleccion (orden: 1-4). */
+const IMG_COLECCIONES = {
+  1: 'assets/img/navidad/col-ciencia-ficcion.jpg',
+  2: 'assets/img/navidad/col-terror-80s.jpg',
+  3: 'assets/img/navidad/col-series-drama.jpg',
+  4: 'assets/img/navidad/col-animacion.jpg',
+};
+
 /** Pinta las tarjetas de colecciones tematicas. */
 async function renderColecciones() {
   const contenedor = porId('rejillaColecciones');
@@ -19,17 +27,27 @@ async function renderColecciones() {
   const colecciones = await obtenerColecciones();
   contenedor.replaceChildren(
     ...colecciones.map((coleccion) => {
-      const tarjeta = crear(
-        'article',
-        { class: 'tarjeta-coleccion', style: `--color-coleccion:${coleccion.color}` },
-        crear('h3', {}, coleccion.nombre),
-        crear('p', {}, coleccion.descripcion),
-        crear('span', { class: 'etiqueta', style: `background:${coleccion.color}1f;color:${coleccion.color}` }, `${coleccion.total} modelos`),
-        crear('p', { style: 'margin-top:.8rem' },
-          crear('a', { href: `catalogo.html?coleccion=${coleccion.id}` }, 'Ver la coleccion →')
+      const foto = IMG_COLECCIONES[coleccion.id] ?? IMG_COLECCIONES[1];
+      return crear(
+        'a',
+        { class: 'tarjeta-coleccion', href: `catalogo.html?coleccion=${coleccion.id}` },
+        crear(
+          'div',
+          {
+            class: 'tarjeta-coleccion__foto',
+            style: `background-image:url('${foto}')`,
+            role: 'img',
+            'aria-label': `Coleccion ${coleccion.nombre}, edicion Navidad 2026`,
+          },
+          crear('span', { class: 'tarjeta-coleccion__nombre' }, coleccion.nombre)
+        ),
+        crear(
+          'div',
+          { class: 'tarjeta-coleccion__cuerpo' },
+          crear('p', {}, coleccion.descripcion),
+          crear('span', { class: 'tarjeta-coleccion__meta' }, `${coleccion.total} modelos · Ver coleccion →`)
         )
       );
-      return tarjeta;
     })
   );
 }
@@ -82,9 +100,29 @@ async function renderMetricas() {
   if (nodoModelos) nodoModelos.textContent = String(productos.length);
 }
 
+/** Genera copos de nieve decorativos en el hero (se omiten con movimiento reducido). */
+function sembrarCopos() {
+  const contenedor = porId('copos');
+  if (!contenedor || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const total = 26;
+  for (let i = 0; i < total; i += 1) {
+    const copo = document.createElement('span');
+    copo.className = 'copo';
+    const tam = (3 + Math.random() * 6).toFixed(1);
+    copo.style.width = `${tam}px`;
+    copo.style.height = `${tam}px`;
+    copo.style.left = `${(Math.random() * 100).toFixed(1)}%`;
+    copo.style.animationDuration = `${(9 + Math.random() * 9).toFixed(1)}s`;
+    copo.style.animationDelay = `${(-Math.random() * 14).toFixed(1)}s`;
+    copo.style.opacity = (0.5 + Math.random() * 0.5).toFixed(2);
+    contenedor.append(copo);
+  }
+}
+
 /** Inicializa la pagina de inicio. */
 async function iniciar() {
   conectarCabecera();
+  sembrarCopos();
   renderRequisitos();
   await Promise.all([renderColecciones(), renderDestacados(), renderMetricas()]);
 

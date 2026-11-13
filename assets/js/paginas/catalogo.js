@@ -215,18 +215,29 @@ async function agregarAlCarritoRapido(producto) {
   }
 }
 
+/** Foco y teclado para el panel del carrito. */
+let elementoQueAbrioCarrito = null;
+
 /** Abre el panel lateral del carrito. */
 function abrirCarrito() {
   const panel = porId('panelCarrito');
+  elementoQueAbrioCarrito = document.activeElement;
   panel?.classList.add('abierto');
-  porId('fondoCarrito')?.classList.remove('oculto');
-  refrescarCarrito();
+  const fondo = porId('fondoCarrito');
+  fondo?.classList.remove('oculto');
+  refrescarCarrito().then(() => {
+    panel?.querySelector('.cerrar')?.focus();
+  });
 }
 
 /** Cierra el panel lateral del carrito. */
 function cerrarCarrito() {
   porId('panelCarrito')?.classList.remove('abierto');
   porId('fondoCarrito')?.classList.add('oculto');
+  if (elementoQueAbrioCarrito instanceof HTMLElement) {
+    elementoQueAbrioCarrito.focus();
+    elementoQueAbrioCarrito = null;
+  }
 }
 
 /** Vuelve a pintar el contenido del carrito. */
@@ -433,8 +444,8 @@ async function abrirCheckout() {
   }
   const total = calcularTotal(items);
 
-  const correo = crear('input', { type: 'email', placeholder: 'tu@correo.cl', value: estado.usuario?.email ?? '', required: true });
-  const direccion = crear('input', { type: 'text', placeholder: 'Calle, numero, ciudad' });
+  const correo = crear('input', { type: 'email', placeholder: 'tu@correo.cl', value: estado.usuario?.email ?? '', required: true, autocomplete: 'email', name: 'email', inputmode: 'email' });
+  const direccion = crear('input', { type: 'text', placeholder: 'Calle, numero, ciudad', autocomplete: 'street-address', name: 'direccion' });
   const metodo = crear('select', {}, ...METODOS_PAGO.map((m) => crear('option', { value: m.id }, m.nombre)));
   const error = crear('p', { class: 'mensaje-error oculto' });
 
@@ -454,7 +465,7 @@ async function abrirCheckout() {
   confirmar.addEventListener('click', async () => {
     error.classList.add('oculto');
     confirmar.disabled = true;
-    confirmar.textContent = 'Verificando pago...';
+    confirmar.textContent = 'Verificando pago…';
 
     const resultado = await confirmarPedido({
       items,
@@ -533,9 +544,9 @@ function mostrarPedidoConfirmado(pedido) {
 
 /** Abre el modal de inicio de sesion / registro. */
 function abrirSesion(modo = 'login') {
-  const nombre = crear('input', { type: 'text', placeholder: 'Nombre completo', required: true });
-  const correo = crear('input', { type: 'email', placeholder: 'tu@correo.cl', required: true });
-  const password = crear('input', { type: 'password', placeholder: 'Contrasena', required: true });
+  const nombre = crear('input', { type: 'text', placeholder: 'Nombre completo', required: true, autocomplete: 'name', name: 'nombre', autocapitalize: 'words' });
+  const correo = crear('input', { type: 'email', placeholder: 'tu@correo.cl', required: true, autocomplete: 'email', name: 'email', inputmode: 'email' });
+  const password = crear('input', { type: 'password', placeholder: 'Contrasena', required: true, autocomplete: modo === 'login' ? 'current-password' : 'new-password', name: 'password' });
   const error = crear('p', { class: 'mensaje-error oculto' });
 
   const camposRegistro = crear('div', { class: 'campo' }, crear('label', {}, 'Nombre'), nombre);
@@ -768,6 +779,12 @@ function conectarEventos() {
   porId('botonAbrirCarrito')?.addEventListener('click', abrirCarrito);
   porId('botonCerrarCarrito')?.addEventListener('click', cerrarCarrito);
   porId('fondoCarrito')?.addEventListener('click', cerrarCarrito);
+  // Escape cierra el panel del carrito (patrón de diálogo accesible).
+  document.addEventListener('keydown', (evento) => {
+    if (evento.key === 'Escape' && porId('panelCarrito')?.classList.contains('abierto')) {
+      cerrarCarrito();
+    }
+  });
 
   document.addEventListener('sockbuster:abrir-sesion', () => abrirSesion('login'));
   document.addEventListener('sockbuster:abrir-admin', () => abrirPanelAdmin());

@@ -3,22 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sockbuster Video &amp; Socks - Calcetines tematicos</title>
-  <meta name="description" content="Sockbuster: tienda especializada en calcetines tematicos inspirados en peliculas clasicas, series de culto y cultura pop. Prototipo web con arquitectura 4+1 UML.">
+  <title>Sockbuster Video &amp; Socks · Edición Navidad 2026</title>
+  <meta name="description" content="Sockbuster: calcetines tematicos inspirados en peliculas, series y cultura pop. Edición Navidad 2026 con diseños coleccionables de edición limitada. Prototipo web con arquitectura 4+1 UML.">
+  <meta name="theme-color" content="#0e2a1f">
   <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
-  <link rel="preload" as="image" href="assets/img/hero.svg">
+  <link rel="preload" as="image" href="assets/img/navidad/hero.jpg" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
 <body>
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+  <div class="cinta" role="status">
+    <strong>Edición Navidad 2026</strong> · Envío gratis en compras sobre $50.000 · Devolución gratis hasta el 7 de enero
+  </div>
+
   <header class="cabecera">
     <div class="contenedor cabecera__fila">
-      <a class="marca" href="index.html">
-        <img src="assets/img/logo.svg" alt="Logo de Sockbuster" width="34" height="34">
+      <a class="marca" href="index.html" aria-label="Sockbuster - inicio">
+        <span class="marca__cuadro"><img src="assets/img/logo.svg" alt="" width="30" height="30"></span>
         <span>SOCK<b>BUSTER</b></span>
       </a>
       <nav class="nav-principal" aria-label="Navegacion principal">
-        <a href="index.html">Inicio</a>
-        <a href="catalogo.html">Catalogo</a>
+        <a href="index.html" class="activo">Inicio</a>
+        <a href="catalogo.html">Catálogo</a>
         <a href="diagramas.html">Diagramas UML</a>
       </nav>
       <div class="acciones-cabecera">
@@ -31,104 +38,115 @@
     </div>
   </header>
 
-  <main>
+  <main id="contenido">
     <!-- ------------------------------------------------------------ hero -->
-    <section class="hero">
+    <section class="hero" aria-label="Portada Navidad 2026">
+      <div class="hero__fondo" role="img" aria-label="Calcetines navideños de Sockbuster sobre una mesa de madera con regalos y un árbol de Navidad iluminado"></div>
+      <div class="hero__copos" aria-hidden="true" id="copos"></div>
       <div class="contenedor">
-        <div class="hero__panel">
-          <div class="hero__texto">
-            <span class="hero__etiqueta">Video &amp; Socks desde 2026</span>
-            <h1>Calcetines que cuentan la historia de tu cultura pop</h1>
-            <p class="hero__destacado">
-              Cada modelo esta inspirado en una pelicula, una serie o un clasico de la animacion.
-              Explora el catalogo por coleccion, arma tu pedido y completa todo el recorrido de compra.
-            </p>
-            <div class="hero__cta">
-              <a class="boton boton--primario" href="catalogo.html">Explorar el catalogo</a>
-              <a class="boton boton--fantasma" href="diagramas.html">Ver la arquitectura 4+1</a>
-            </div>
-          </div>
-          <div class="hero__arte">
-            <img src="assets/img/hero.svg" alt="Coleccion de calcetines tematicos Sockbuster" width="640" height="300">
-          </div>
-        </div>
-
-        <!-- ------------------------------------------------- credenciales -->
-        <div class="creditos">
-          <div class="creditos__titulo">Integrantes del equipo</div>
-          <div class="creditos__nombres">
-            <!-- Nombre del estudiante. Es editable en el navegador (contenteditable):
-                 click en el nombre y escribir, sin tocar el codigo. -->
-            <span
-              class="nombre-integrante"
-              contenteditable="true"
-              spellcheck="false"
-              title="Editable en el navegador"
-            >Fernando Zapata</span>
+        <div class="hero__contenido">
+          <span class="cinta-temporada">✦ Edición Navidad 2026</span>
+          <h1>Calcetines que <em>celebran</em> la navidad con cultura pop</h1>
+          <p class="hero__destacado">
+            La edición de la temporada ya está: diseños inspirados en tus películas y series
+            favoritas, tejidos para regalar —o para quedarte. Cultura pop, del pie al árbol.
+          </p>
+          <div class="hero__cta">
+            <a class="boton boton--primario" href="catalogo.html">Explorar la edición navideña</a>
+            <a class="boton boton--fantasma" href="diagramas.html">Ver la arquitectura 4+1</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ------------------------------------------------------ metricas -->
-    <section class="seccion">
+    <!-- ────────────────────────------------------------ integración escuela / equipo -->
+    <div class="contenedor">
+      <div class="creditos">
+        <div class="creditos__titulo">Integrantes del equipo</div>
+        <div class="creditos__nombres">
+          <span
+            class="nombre-integrante"
+            contenteditable="true"
+            spellcheck="false"
+            role="textbox"
+            aria-label="Nombre del estudiante, editable"
+            title="Editable en el navegador"
+          >Fernando Zapata</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ────────────────────────------------------------------ metricas -->
+    <section class="seccion" aria-label="Datos de la tienda">
       <div class="contenedor">
-        <div class="rejilla-2" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+        <div class="rejilla-2" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr))">
           <div class="tarjeta-info">
-            <h4>Modelos en catalogo</h4>
-            <p style="font-size:1.8rem;font-weight:800;margin:0;color:var(--rojo)" id="totalModelos">-</p>
+            <h4>Modelos en catálogo</h4>
+            <p style="font-size:1.7rem;font-weight:800;margin:0;color:var(--pino-800)" id="totalModelos">-</p>
           </div>
           <div class="tarjeta-info">
             <h4>Desde</h4>
-            <p style="font-size:1.8rem;font-weight:800;margin:0;color:var(--rojo)" id="precioDesde">-</p>
+            <p style="font-size:1.7rem;font-weight:800;margin:0;color:var(--pino-800)" id="precioDesde">-</p>
           </div>
           <div class="tarjeta-info">
-            <h4>Colecciones tematicas</h4>
-            <p style="font-size:1.8rem;font-weight:800;margin:0;color:var(--rojo)">4</p>
+            <h4>Colecciones temáticas</h4>
+            <p style="font-size:1.7rem;font-weight:800;margin:0;color:var(--pino-800)">4</p>
           </div>
           <div class="tarjeta-info">
             <h4>Vistas UML documentadas</h4>
-            <p style="font-size:1.8rem;font-weight:800;margin:0;color:var(--rojo)">5</p>
+            <p style="font-size:1.7rem;font-weight:800;margin:0;color:var(--pino-800)">5</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- --------------------------------------------------- colecciones -->
+    <hr class="puntada">
+
+    <!-- ────────────────────────--------------------------- colecciones -->
     <section class="seccion">
       <div class="contenedor">
         <div class="seccion__cabecera">
-          <div class="eyebrow">Colecciones</div>
-          <h2>Explorar por tematica</h2>
-          <p>Cada coleccion agrupa los calcetines segun el universo que los inspira.</p>
+          <div>
+            <div class="eyebrow">Edición Navidad</div>
+            <h2>Colecciones temáticas</h2>
+            <p>Cuatro universos, un mismo espíritu: cada par cuenta la película o la serie que lo inspiró — esta vez, envuelto para regalo.</p>
+          </div>
         </div>
         <div class="rejilla-colecciones" id="rejillaColecciones"></div>
       </div>
     </section>
 
-    <!-- ------------------------------------------------------ destacados -->
+    <hr class="puntada">
+
+    <!-- ────────────────────────────────---------------------- destacados -->
     <section class="seccion">
       <div class="contenedor">
         <div class="seccion__cabecera">
-          <div class="eyebrow">Mas vendidos</div>
-          <h2>Los favoritos de la comunidad</h2>
-          <p>Seleccion destacada del catalogo de Sockbuster.</p>
+          <div>
+            <div class="eyebrow">Los más regalados</div>
+            <h2>Favoritos de la temporada</h2>
+            <p>Selección destacada del catálogo Sockbuster para estas fiestas.</p>
+          </div>
         </div>
         <div class="rejilla-productos" id="rejillaDestacados"></div>
       </div>
     </section>
 
-    <!-- --------------------------------------------------- requerimientos -->
+    <hr class="puntada">
+
+    <!-- ────────────────────────────────------------------- requerimientos -->
     <section class="seccion">
       <div class="contenedor">
         <div class="seccion__cabecera">
-          <div class="eyebrow">Trazabilidad</div>
-          <h2>Requerimientos del caso de estudio</h2>
-          <p>
-            Cada requerimiento funcional y no funcional del caso "Sockbuster Video &amp; Socks" se
-            modela en las vistas UML y se materializa en la web. Esta matriz es la que sostiene la
-            interpretacion de los requerimientos (criterio 2.1.1).
-          </p>
+          <div>
+            <div class="eyebrow">Trazabilidad</div>
+            <h2>Requerimientos del caso de estudio</h2>
+            <p>
+              Cada requerimiento funcional y no funcional del caso "Sockbuster Video &amp; Socks"
+              se modela en las vistas UML y se materializa en la web. Esta matriz vincula
+              requerimiento → vista → implementación (criterio 2.1.1).
+            </p>
+          </div>
         </div>
         <div style="overflow-x:auto;background:var(--superficie);border:1px solid var(--borde);border-radius:var(--radio)">
           <table class="tabla-traza">
@@ -137,7 +155,7 @@
                 <th style="width:72px">ID</th>
                 <th>Requerimiento</th>
                 <th style="width:24%">Vista UML</th>
-                <th style="width:26%">Implementacion en la web</th>
+                <th style="width:26%">Implementación en la web</th>
               </tr>
             </thead>
             <tbody id="cuerpoRequisitos"></tbody>
@@ -151,34 +169,34 @@
     <div class="contenedor">
       <div class="pie__rejilla">
         <div>
-          <h4>Sockbuster Video &amp; Socks</h4>
-          <p style="font-size:.9rem;max-width:44ch">
+          <h4>Sockbuster Video &amp; Socks · Edición Navidad</h4>
+          <p style="font-size:.9rem;max-width:46ch">
             Prototipo funcional de arquitectura de software. Modelado con el paradigma 4+1 de
-            vistas UML y desplegado en GitHub Pages.
+            vistas UML y desplegado en GitHub Pages. Hecho con cariño para quienes ven cine en pantuflas.
           </p>
         </div>
         <div>
           <h4>Sitio</h4>
           <ul>
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="catalogo.html">Catalogo</a></li>
+            <li><a href="catalogo.html">Catálogo</a></li>
             <li><a href="diagramas.html">Diagramas UML</a></li>
           </ul>
         </div>
         <div>
           <h4>Arquitectura</h4>
           <ul>
-            <li>Vista Logica</li>
+            <li>Vista Lógica</li>
             <li>Vista de Desarrollo</li>
             <li>Vista de Procesos</li>
-            <li>Vista Fisica</li>
+            <li>Vista Física</li>
             <li>Escenarios</li>
           </ul>
         </div>
       </div>
       <div class="pie__firma">
-        <span>Modelamiento de soluciones informaticas &middot; TI3025</span>
-        <span>Prototipo desplegado en GitHub Pages &middot; 2026</span>
+        <span>Modelamiento de soluciones informáticas · TI3025</span>
+        <span>Prototipo desplegado en GitHub Pages · 2026</span>
       </div>
     </div>
   </footer>

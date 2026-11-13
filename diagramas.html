@@ -3,22 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Arquitectura UML 4+1 - Sockbuster</title>
+  <title>Arquitectura UML 4+1 · Sockbuster</title>
   <meta name="description" content="Documentacion tecnica de la arquitectura de Sockbuster segun el paradigma 4+1 de vistas UML: vista logica, vista de desarrollo, vista de procesos, vista fisica y escenarios.">
+  <meta name="theme-color" content="#0e2a1f">
   <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
   <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
 <body>
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+  <div class="cinta" role="status">
+    <strong>Edición Navidad 2026</strong> · Envío gratis en compras sobre $50.000 · Devolución gratis hasta el 7 de enero
+  </div>
+
   <header class="cabecera">
     <div class="contenedor cabecera__fila">
-      <a class="marca" href="index.html">
-        <img src="assets/img/logo.svg" alt="Logo de Sockbuster" width="34" height="34">
+      <a class="marca" href="index.html" aria-label="Sockbuster - inicio">
+        <span class="marca__cuadro"><img src="assets/img/logo.svg" alt="" width="30" height="30"></span>
         <span>SOCK<b>BUSTER</b></span>
       </a>
       <nav class="nav-principal" aria-label="Navegacion principal">
         <a href="index.html">Inicio</a>
-        <a href="catalogo.html">Catalogo</a>
-        <a href="diagramas.html">Diagramas UML</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="diagramas.html" class="activo">Diagramas UML</a>
       </nav>
       <div class="acciones-cabecera">
         <div id="zonaSesion" style="display:flex;gap:.4rem;align-items:center"></div>
@@ -43,7 +50,7 @@
     </div>
   </nav>
 
-  <main>
+  <main id="contenido">
     <section class="seccion" style="padding-bottom:1rem">
       <div class="contenedor">
         <div class="seccion__cabecera">
@@ -61,7 +68,7 @@
     </section>
 
     <div class="contenedor" id="seccionesDiagramas">
-      <p style="color:var(--tinta-suave)">Cargando diagramas...</p>
+      <p style="color:var(--tinta-suave)">Cargando diagramas…</p>
       <noscript>
         <p>Esta pagina requiere JavaScript para mostrar los diagramas embebidos. Podes abrir los SVG directamente:</p>
         <ul>
@@ -83,34 +90,34 @@
     <div class="contenedor">
       <div class="pie__rejilla">
         <div>
-          <h4>Sockbuster Video &amp; Socks</h4>
-          <p style="font-size:.9rem;max-width:44ch">
+          <h4>Sockbuster Video &amp; Socks · Edición Navidad</h4>
+          <p style="font-size:.9rem;max-width:46ch">
             Prototipo funcional de arquitectura de software. Modelado con el paradigma 4+1 de
-            vistas UML y desplegado en GitHub Pages.
+            vistas UML y desplegado en GitHub Pages. Hecho con cariño para quienes ven cine en pantuflas.
           </p>
         </div>
         <div>
           <h4>Sitio</h4>
           <ul>
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="catalogo.html">Catalogo</a></li>
+            <li><a href="catalogo.html">Catálogo</a></li>
             <li><a href="diagramas.html">Diagramas UML</a></li>
           </ul>
         </div>
         <div>
           <h4>Arquitectura</h4>
           <ul>
-            <li>Vista Logica</li>
+            <li>Vista Lógica</li>
             <li>Vista de Desarrollo</li>
             <li>Vista de Procesos</li>
-            <li>Vista Fisica</li>
+            <li>Vista Física</li>
             <li>Escenarios</li>
           </ul>
         </div>
       </div>
       <div class="pie__firma">
-        <span>Modelamiento de soluciones informaticas &middot; TI3025</span>
-        <span>Prototipo desplegado en GitHub Pages &middot; 2026</span>
+        <span>Modelamiento de soluciones informáticas · TI3025</span>
+        <span>Prototipo desplegado en GitHub Pages · 2026</span>
       </div>
     </div>
   </footer>

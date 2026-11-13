@@ -39,7 +39,7 @@ COLECCIONES = [
         "id": 4,
         "nombre": "Animación",
         "slug": "animacion",
-        "descripcion": "Pixeles,otas de anime y animated clasicos.",
+        "descripcion": "Pixeles, dibujos animados clasicos y disenos de culto.",
         "color": "#d98324",
         "icono": "corazon",
     },

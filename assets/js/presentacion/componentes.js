@@ -42,7 +42,7 @@ export function tarjetaProducto(producto, { alVerDetalle, alAgregar }) {
 
   const botonDetalle = crear(
     'button',
-    { class: 'boton boton--fantasma boton--chico', type: 'button', 'data-accion': 'detalle' },
+    { class: 'boton boton--fantasma boton--chico', type: 'button', 'data-accion': 'detalle', 'aria-label': `Ver ficha de ${producto.nombre}` },
     'Ver ficha'
   );
   botonDetalle.addEventListener('click', () => alVerDetalle(producto));
@@ -53,6 +53,7 @@ export function tarjetaProducto(producto, { alVerDetalle, alAgregar }) {
       class: 'boton boton--primario boton--chico',
       type: 'button',
       'data-accion': 'agregar',
+      'aria-label': `Agregar ${producto.nombre} al carrito`,
       disabled: producto.stock <= 0 || !producto.activo,
     },
     producto.stock <= 0 ? 'Sin stock' : 'Agregar'

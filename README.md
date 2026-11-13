@@ -1,7 +1,10 @@
-# Sockbuster Video & Socks
+# Sockbuster Video & Socks · Edición Navidad 2026
 
 Prototipo web funcional de una tienda de calcetines tematicos, modelado con el **paradigma 4+1 de
 vistas UML** y desplegado en linea en GitHub Pages.
+La edicion actual es la **Edicion Navidad 2026**, una piel de temporada sobre la misma arquitectura
+(imagenes coleccion navideña generadas con IA, tipografia Fraunces autoalojada, copos de nieve CSS
+respetuosos de `prefers-reduced-motion`, tarjetas con compositor de puntadas).
 
 ## Sitio publicado
 

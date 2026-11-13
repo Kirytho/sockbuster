@@ -60,7 +60,6 @@ Los clientes se registran desde el boton "Ingresar" -> "No tengo cuenta, registr
 │       └── paginas/        inicio, catalogo, diagramas
 ├── data/catalogo.json                             catalogo semilla (26 modelos)
 ├── uml/diagramas/                                 9 diagramas .puml + .svg + .png
-├── docs/AUTOEVALUACION.md                         autoevaluacion contra la rubrica
 └── scripts/                                       generadores y verificaciones
 ```
 

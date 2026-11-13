@@ -103,8 +103,8 @@ Evidencia de cobertura por requerimiento:
 
 - Las tres paginas existen y funcionan: `index.html`, `catalogo.html`, `diagramas.html`.
 - El sitio esta **publicado y en linea**: https://kirytho.github.io/sockbuster/
-- La pagina de inicio incluye el bloque **"Integrantes del equipo"** con campos editables para
-  los nombres de los estudiantes.
+- La pagina de inicio incluye el bloque **"Integrantes del equipo"** con el nombre del
+  estudiante (**Fernando Zapata**), editable directamente en el navegador.
 - La pagina de diagramas esta **organizada estrictamente** por las cinco vistas del 4+1, con
   navegacion por vistas y el fuente PlantUML de cada diagrama desplegable.
 - Interfaz completa y navegable: filtros, grilla, modales accesibles con foco atrapado y cierre

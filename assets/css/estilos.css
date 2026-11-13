@@ -158,6 +158,14 @@ p  { margin: 0 0 1rem; }
 .creditos__nombres {
   display: flex; gap: .6rem; flex-wrap: wrap; align-items: center;
 }
+.nombre-integrante {
+  font-size: 1.05rem; font-weight: 700; color: var(--tinta);
+  background: var(--crema); border: 1px solid var(--borde);
+  border-radius: var(--radio-chico); padding: .5rem .9rem; min-width: 14rem;
+  display: inline-block; outline: none; transition: border-color .15s ease, background .15s ease;
+}
+.nombre-integrante:hover { border-color: var(--tinta-suave); }
+.nombre-integrante:focus { border-color: var(--azul); background: #fff; box-shadow: 0 0 0 2px rgba(59,111,212,.25); }
 .campo-nombre {
   font: inherit; font-weight: 650; font-size: .96rem; color: var(--tinta);
   background: var(--crema); border: 1px solid var(--borde);

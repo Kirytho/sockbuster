@@ -56,9 +56,14 @@
         <div class="creditos">
           <div class="creditos__titulo">Integrantes del equipo</div>
           <div class="creditos__nombres">
-            <!-- Los nombres de los estudiantes se completan aqui (campos editables). -->
-            <input class="campo-nombre" type="text" placeholder="Nombre y apellido del estudiante" aria-label="Nombre del estudiante">
-            <input class="campo-nombre" type="text" placeholder="Nombre y apellido del estudiante" aria-label="Nombre del estudiante">
+            <!-- Nombre del estudiante. Es editable en el navegador (contenteditable):
+                 click en el nombre y escribir, sin tocar el codigo. -->
+            <span
+              class="nombre-integrante"
+              contenteditable="true"
+              spellcheck="false"
+              title="Editable en el navegador"
+            >Fernando Zapata</span>
           </div>
         </div>
       </div>

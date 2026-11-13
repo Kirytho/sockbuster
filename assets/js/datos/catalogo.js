@@ -51,15 +51,22 @@ export async function obtenerPeliculasSeries() {
 
 /**
  * Devuelve el catalogo efectivo: productos semilla + overrides locales.
- * Si un producto fue dado de baja se conserva con activo=false.
+ * Los overrides con id no presente en el seed son modelos NUEVOS registrados
+ * desde el panel de administracion: se anexan al final. Antes se descartaban
+ * silenciosamente, por lo que un modelo registrado nunca llegaba a la grilla.
  */
 export async function listarProductos() {
   const { productos } = await obtenerSemilla();
   if (!overrides.size) await cargarOverrides();
-  return (productos ?? []).map((p) => {
+  const semillaIds = new Set(productos.map((p) => p.id));
+  const efectivos = productos.map((p) => {
     const override = overrides.get(p.id);
     return override ? { ...p, ...override } : { ...p };
   });
+  for (const override of overrides.values()) {
+    if (!semillaIds.has(override.id)) efectivos.push({ ...override });
+  }
+  return efectivos;
 }
 
 /** Devuelve un producto por id. */
@@ -119,7 +126,10 @@ export async function registrarProducto(datos) {
     motivo: datos.motivo ?? 'planeta',
     coleccionId: Number(datos.coleccionId) || 1,
     peliculaSerieId: Number(datos.peliculaSerieId) || 1,
-    imagen: `assets/img/calcetines/calcetin-${String(nuevoId).padStart(2, '0')}.svg`,
+    // Los modelos creados desde el panel de administracion no tienen imagen
+    // generada: usar el marcador generico en vez de una ruta inventada
+    // (la ruta calcetin-NN.svg solo existe para los 26 modelos semilla).
+    imagen: 'assets/img/calcetines/placeholder.svg',
     destacado: Boolean(datos.destacado),
     activo: true,
     creadoEn: new Date().toISOString(),

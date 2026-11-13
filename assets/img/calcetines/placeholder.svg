@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Calcetin generico Sockbuster">
+  <title>Modelo pendiente de imagen</title>
+  <path d="M68 26 Q100 15 132 26 L132 104 Q132 123 146 135 L166 152 Q181 165 181 180 Q181 192 166 192 L82 192 Q58 192 58 168 L58 48 Q58 31 68 26 Z" fill="#8d99a5" stroke="#4a5568" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M58 44 Q100 33 132 44 L132 22 Q100 11 68 22 Q58 27 58 44 Z" fill="#4a5568"/>
+  <path d="M58 168 Q58 192 82 192 L104 192 Q92 180 92 164 Q92 150 104 138 L92 138 Q58 140 58 168 Z" fill="#4a5568" opacity="0.6"/>
+  <path d="M181 180 Q181 192 166 192 L150 192 Q160 186 160 174 Q160 162 152 155 L166 152 Q181 165 181 180 Z" fill="#4a5568" opacity="0.45"/>
+  <text x="100" y="108" text-anchor="middle" font-family="Verdana, sans-serif" font-size="34" font-weight="bold" fill="#f7f3ea">SB</text>
+</svg>

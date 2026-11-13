@@ -136,32 +136,32 @@ function construirSeccion(diagrama) {
 
 /**
  * Marca la vista activa en la navegacion superior al hacer scroll.
- * La vinculacion se hace por el atributo data-vista de cada seccion, no por
- * id: los anchors de la barra apuntan al primer diagrama de cada vista, pero
- * hay varios diagramas por vista.
+ * Metodo directo por posicion: la ultima seccion cuyo borde superior ya paso
+ * el umbral es la vista activa. Esto evita el problema del IntersectionObserver
+ * con multiples secciones intersectadas en el mismo frame (ganaba la ultima,
+ * no la mas cercana al borde superior).
  */
 function observarVistas() {
   const enlaces = [...document.querySelectorAll('.nav-vistas a')];
-  if (!enlaces.length || !('IntersectionObserver' in window)) return;
+  if (!enlaces.length) return;
 
-  const idDelPrimerDiagramaDe = (vista) =>
-    [...document.querySelectorAll('.vista')].find((s) => s.dataset.vista === vista)?.id ?? null;
+  const pares = enlaces
+    .map((a) => ({ enlace: a, seccion: document.getElementById(a.getAttribute('href').slice(1)) }))
+    .filter((p) => p.seccion);
 
-  const observador = new IntersectionObserver(
-    (entradas) => {
-      for (const entrada of entradas) {
-        if (!entrada.isIntersecting) continue;
-        const vista = entrada.target.dataset.vista;
-        const primerId = idDelPrimerDiagramaDe(vista);
-        for (const enlace of enlaces) {
-          enlace.classList.toggle('activo', enlace.getAttribute('href') === `#${primerId}`);
-        }
-      }
-    },
-    { rootMargin: '-80px 0px -70% 0px', threshold: 0 }
-  );
+  const actualizar = () => {
+    let elegido = pares[0];
+    for (const p of pares) {
+      if (p.seccion.getBoundingClientRect().top <= 140) elegido = p;
+    }
+    for (const enlace of enlaces) {
+      enlace.classList.toggle('activo', enlace === elegido?.enlace);
+    }
+  };
 
-  for (const seccion of document.querySelectorAll('.vista')) observador.observe(seccion);
+  window.addEventListener('scroll', actualizar, { passive: true });
+  window.addEventListener('resize', actualizar, { passive: true });
+  actualizar();
 }
 
 /** Inicializa la pagina de diagramas. */

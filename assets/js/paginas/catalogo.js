@@ -563,10 +563,11 @@ function abrirSesion(modo = 'login') {
     crear(
       'p',
       { style: 'font-size:.8rem;color:var(--tinta-suave);background:var(--crema);border:1px solid var(--borde);border-radius:9px;padding:.6rem .7rem;margin:.8rem 0 0' },
-      'Credenciales de administracion del prototipo: ',
+      'Credenciales de demostracion del prototipo (entorno local, sin backend real): ',
       crear('code', {}, 'admin@sockbuster.cl'),
       ' / ',
-      crear('code', {}, 'Sockbuster2026')
+      crear('code', {}, 'Sockbuster2026'),
+      ' — solo para probar el panel de administracion. En produccion la autenticacion iria contra un IdP externo (ver arquitectura objetivo en Diagramas).'
     )
   );
 
